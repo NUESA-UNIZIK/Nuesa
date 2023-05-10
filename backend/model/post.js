@@ -9,7 +9,19 @@ const postSchema = new Schema({
         type: String,
         required: true
     },
-    description: {
+    body: {
+        type: String,
+        required: true
+    },
+    type:{
+        type: String,
+        required: true
+    },
+    slug:{
+        type: String,
+        required: true
+    },
+    excerpt:{
         type: String,
         required: true
     },

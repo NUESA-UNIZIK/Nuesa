@@ -3,19 +3,25 @@ import { IoIosArrowForward } from "react-icons/io";
 import { Link } from "react-router-dom";
 import Footer from "../../Homepage/Footer/Footer";
 import Navbar2 from "../../Homepage/Header/Navbar2";
+import axios from 'axios'
+
 
 const Signup = () => {
-  const [username, setUsername] = useState("")
-  const [email, setEmail] = useState("")
+  const [firstName, setFirstName] = useState("")
+  const [username, setUserName] = useState("")
   const [department, setDepartment] = useState("")
   const [level, setLevel] = useState("")
   const [password, setPassword] = useState("")
   const [password2, setPassword2] = useState("")
-  const hey = (e)=>{
-    setDepartment(e.target.value)
-  }
+
   
-  const data = {username,email,department,level,password,password2}
+  const data = {firstName,username,department,level,password}
+  async function submit(){
+    const res = await axios.post("http://localhost:8000/users/register", data)
+    toast(res.data.message)
+    console.log(res)
+  }
+
 
   return (
     <div className="mx-auto">
@@ -53,16 +59,16 @@ const Signup = () => {
         </Link>
       </div>
       <div className="justify-center mx-auto text-center md:w-[352px] h-[588px] md:shadow-2xl md:border px-2 md:px-0 border-solid rounded-md md:mb-8 mt-16">
-        <form action="">
+        <div >
           <div className="px-6 mt-4 text-start">
             <label htmlFor="" className="text-end font-semibold">
-              Username
+              Firstname
             </label>
             <input
               type="text"
               className="w-[100%] h-[44px] rounded-[8px] focus:outline-none px-4 mt-2 bg-[#F5F2ED]"
-              value={username}
-              onChange={(e)=> setUsername(e.target.value)}
+              value={firstName}
+              onChange={(e)=> setFirstName(e.target.value)}
             />
           </div>
 
@@ -73,8 +79,8 @@ const Signup = () => {
             <input
               type="email"
               className="w-[100%] h-[44px] rounded-[8px] focus:outline-none px-4 mt-2 bg-[#F5F2ED]"
-              value={email}
-              onChange={(e)=> setEmail(e.target.value)}
+              value={username}
+              onChange={(e)=> setUserName(e.target.value)}
             />
           </div>
 
@@ -167,13 +173,13 @@ const Signup = () => {
 
           <div className="px-6 mt-6 text-start">
             <button
-              type="submit"
               className="w-[100%] h-[44px] rounded-[8px] font-bold focus:outline-none px-4 mt-2 bg-black text-white"
+              onClick={()=> submit()}
             >
               Create an account
             </button>
           </div>
-        </form>
+        </div>
       </div>
       <p className="text-center mb-8">
         Already have an account?{" "}

@@ -5,11 +5,12 @@ exports.register = (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
     const firstName = req.body.firstName;
+    const user = req.body
 
     //Register a new user using the local strategy
     //Passportjs requires 3 objects, the first and second are the user details while the third is the callback function
     //if the user has another identifier, enclose them in an object paranthesis
-    User.register(new User({username: username, firstName}), password, (err) => {
+    User.register(new User(user), password, (err) => {
         if(err) {
             //res.send("try again");
             res.status(400).json({err: err.message});
@@ -17,7 +18,7 @@ exports.register = (req, res) => {
         else{
             passport.authenticate("local")(req, res, () => {
                 res.setHeader("Content-Type", "application/json");
-                res.status(200).json({success: true, message: "Registration Successful"});
+                res.status(200).json({success: true, message: "Registration Successful", user});
                 // res.redirect("/login");
             })
         }
@@ -32,14 +33,12 @@ exports.login = (req, res, next) => {
             return next(err);
         }
         if(!user){
-            res.statusCode = 404;
-            res.json({status: false, error: info.message})
+           return res.status(200).json({status: false, error: info.message})
             //res.redirect("/register")
         }
-        
         req.login(user, (err) => {
             if(err) { return next(err);}
-            res.json({status: true, message: "Login successful"})
+            res.json({status: true, message: "Login successful", user})
             //return res.redirect("/register");
         });
     })(req, res, next);

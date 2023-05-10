@@ -1,13 +1,31 @@
 import React, { useState } from "react";
 import { IoIosArrowForward } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from "../../Homepage/Footer/Footer";
 import Navbar2 from "../../Homepage/Header/Navbar2";
+import axios from "axios"
+import { toast } from 'react-toastify';
+import {create} from "zustand"
+
 
 const Login = () => {
-const [email, setEmail] = useState("")
+const [username, setUsername] = useState("")
 const [password, setPassword] = useState("")
+const [response, setResponse] = useState(null)
+const navigate = useNavigate()
 
+const data = {username,password}
+ 
+async function submit (){
+  const res = await axios.post("http://localhost:8000/users/login", data, { withCredentials: true })
+  const {error, status, message} = res.data
+    if(status){
+          toast.success(message)
+          navigate('/')
+        }else{
+          toast.error(error)
+        }
+      } 
 
   return (
     <div className="mx-auto">
@@ -39,16 +57,16 @@ const [password, setPassword] = useState("")
         </Link>
       </div>
       <div className="justify-center mx-auto text-center md:w-[352px] md:shadow-2xl md:border border-solid md:mb-8 rounded-md mt-16">
-        <form action="">
+        <div >
           <div className="px-6 mt-6 text-start">
             <label htmlFor="" className="text-end font-semibold">
               Email address
             </label>
             <input
-              type="email"
+              type="username"
               className="w-[100%] h-[44px] rounded-[8px] focus:outline-none px-4 mt-2 bg-[#F5F2ED]"
-              value={email}
-              onChange={(e)=> setEmail(e.target.value)}
+              value={username}
+              onChange={(e)=> setUsername(e.target.value)}
             />
           </div>
 
@@ -65,13 +83,13 @@ const [password, setPassword] = useState("")
           </div>
           <div className="px-6 mt-6 text-start">
             <button
-              type="submit"
+              onClick={submit}
               className="w-[100%] h-[44px] mb-8 rounded-[8px] font-bold focus:outline-none px-4 mt-2 bg-black text-white"
             >
               Login
             </button>
           </div>
-        </form>
+        </div>
       </div>
       <p className="text-center mb-8">
         Don't have an account?{" "}

@@ -17,7 +17,8 @@ import Achievementsscreen from "./pages/Achievements/Achievementsscreen";
 import Aboutpresident from "./Homepage/Aboutpresident/Aboutpresident";
 import AllPosts from "./posts/AllPosts";
 import OnePost from "./posts/OnePost";
-
+import { ToastContainer,  } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
          <Route path="/post/:slug" element={<OnePost/>} />
         </Routes>
       </Router>
+      <ToastContainer />
     </>
   )
 }

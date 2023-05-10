@@ -1,139 +1,90 @@
-import React from "react";
+import {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import img from "../../assets/achimg.png";
 import { IoMdSearch } from "react-icons/io";
+import { getAllPosts } from "../../service/getAllPosts";
+
 
 export const OnlyEvent = () => {
+  const [posts, setPosts] = useState([])
+  useEffect(()=>{
+    async function posts(){
+      setPosts(await getAllPosts())
+     }
+     posts()
+  }, [])
+  if(posts.length == 0){
+    return <h1>Loading.....</h1>
+  }
+console.log(posts)
+  const events =[
+    {
+      title: "NUESA Inter-Departmental Football Cup kicks off",
+      date: "3th Feb 2023",
+      excerpt: "Omnis maiores velit culpa sed corporis cum exercitationem...",
+      body: "Omnis maiores velit culpa sed corporis cum exercitationem sit eum. Ea veritatis et nihil corporis nobis rem ratione quia nemo."
+    },
+    {
+      title: "NUESA Inter-Departmental Football Cup kicks off",
+      date: "3th Feb 2023",
+      excerpt: "Omnis maiores velit culpa sed corporis cum exercitationem...",
+      body: "Omnis maiores velit culpa sed corporis cum exercitationem sit eum. Ea veritatis et nihil corporis nobis rem ratione quia nemo."
+    },
+    {
+      title: "NUESA Inter-Departmental Football Cup kicks off",
+      date: "3th Feb 2023",
+      excerpt: "Omnis maiores velit culpa sed corporis cum exercitationem...",
+      body: "Omnis maiores velit culpa sed corporis cum exercitationem sit eum. Ea veritatis et nihil corporis nobis rem ratione quia nemo."
+    },
+  ]
+
     return(
         <>
       
 
         <div className=" flex flex-col md:flex-row p-[30px] justify-center gap-[100px] items-start mt-[50px]">
         <div className="flex flex-col gap-[16px] justify-center items-start">
-        <Link to="/nuesa">
-            <div className="shadow-xl px-[10px] py-[10px] border border-[#fff]   gap-[10px]  flex lg:flex-col items-start rounded-[12px]">
-              <img
-                src={img}
-                alt="news"
-                className="w-[110px] lg:h-[100%] h-[110px] rounded lg:w-[100%] "
-              />
-              <div className="flex flex-row justify-around gap-[20px] items-center">
-              <div className="flex flex-col items-start gap-[22px max-w-[428px]">
-            
-                <div className="flex flex-col gap-[5px] p-0 ">
-                  <p className="text-[12px] font-[700]  text-[#0000000] ">
-                    NUESA Inter-Departmental Football Cup kicks off
-                  </p>
-                  <span className="lg:text-[14px] text-[10px] font-[700] leading-[150%] text-[#888888] ">
-                    13th Feb 2023
-                  </span>
-                  <p className="font-[400] text-[12px] block md:hidden lg:text-[16px] text-[#000000] ">
-                Omnis maiores velit culpa sed corporis cum exercitationem...
-                </p>
-                <p className="font-[400] hidden md:flex text-[12px] lg:text-[16px] text-[#000000] ">
-                Omnis maiores velit culpa sed corporis cum exercitationem
-                    sit eum. Ea veritatis et nihil corporis nobis rem ratione
-                    quia nemo.
-                </p>
-                </div>
-                <Link
-                  to="/nuesa"
-                  className="text-[16px] w-full text-center lg:block hidden font-[700] leading-[150%] rounded-[8px] text-[#092E76] py-[8px] px-[12px] border "
-                >
-                  Read More
-                </Link>
-              </div>
-              <div className="bg-[#DDDDDD]  w-fit rounded-[8px] py-[3px] px-[15px] hidden lg:flex flex-col  ">
-                    <h1 className="text-darkest text-[24px] font-[700]  ">14</h1>
-                    <h2 className="text-darkest text-[16px font-[400]">Nov</h2>
-                </div>
-              </div>
-              
-            </div>
-          </Link>
-          <Link to="/nuesa">
-            <div className="shadow-xl px-[10px] py-[10px] border border-[#fff]   gap-[10px]  flex lg:flex-col items-start rounded-[12px]">
-              <img
-                src={img}
-                alt="news"
-                className="w-[110px] lg:h-[100%] h-[110px] rounded lg:w-[100%] "
-              />
-              <div className="flex flex-row justify-around gap-[20px] items-center">
-              <div className="flex flex-col items-start gap-[22px max-w-[428px]">
-            
-                <div className="flex flex-col gap-[5px] p-0 ">
-                  <p className="text-[12px] font-[700]  text-[#0000000] ">
-                    NUESA Inter-Departmental Football Cup kicks off
-                  </p>
-                  <span className="lg:text-[14px] text-[10px] font-[700] leading-[150%] text-[#888888] ">
-                    13th Feb 2023
-                  </span>
-                  <p className="font-[400] text-[12px] block md:hidden lg:text-[16px] text-[#000000] ">
-                Omnis maiores velit culpa sed corporis cum exercitationem...
-                </p>
-                <p className="font-[400] hidden md:flex text-[12px] lg:text-[16px] text-[#000000] ">
-                Omnis maiores velit culpa sed corporis cum exercitationem
-                    sit eum. Ea veritatis et nihil corporis nobis rem ratione
-                    quia nemo.
-                </p>
-                </div>
-                <Link
-                  to="/nuesa"
-                  className="text-[16px] w-full text-center lg:block hidden font-[700] leading-[150%] rounded-[8px] text-[#092E76] py-[8px] px-[12px] border "
-                >
-                  Read More
-                </Link>
-              </div>
-              <div className="bg-[#DDDDDD]  w-fit rounded-[8px] py-[3px] px-[15px] hidden lg:flex flex-col  ">
-                    <h1 className="text-darkest text-[24px] font-[700]  ">14</h1>
-                    <h2 className="text-darkest text-[16px font-[400]">Nov</h2>
-                </div>
-              </div>
-              
-            </div>
-          </Link>
-
-          <Link to="/nuesa">
-            <div className="shadow-xl px-[10px] py-[10px] border border-[#fff]   gap-[10px]  flex lg:flex-col items-start rounded-[12px]">
-              <img
-                src={img}
-                alt="news"
-                className="w-[110px] lg:h-[100%] h-[110px] rounded lg:w-[100%] "
-              />
-              <div className="flex flex-row justify-around gap-[20px] items-center">
-              <div className="flex flex-col items-start gap-[22px max-w-[428px]">
-            
-                <div className="flex flex-col gap-[5px] p-0 ">
-                  <p className="text-[12px] font-[700]  text-[#0000000] ">
-                    NUESA Inter-Departmental Football Cup kicks off
-                  </p>
-                  <span className="lg:text-[14px] text-[10px] font-[700] leading-[150%] text-[#888888] ">
-                    13th Feb 2023
-                  </span>
-                  <p className="font-[400] text-[12px] block md:hidden lg:text-[16px] text-[#000000] ">
-                Omnis maiores velit culpa sed corporis cum exercitationem...
-                </p>
-                <p className="font-[400] hidden md:flex text-[12px] lg:text-[16px] text-[#000000] ">
-                Omnis maiores velit culpa sed corporis cum exercitationem
-                    sit eum. Ea veritatis et nihil corporis nobis rem ratione
-                    quia nemo.
-                </p>
-                </div>
-                <Link
-                  to="/nuesa"
-                  className="text-[16px] w-full text-center lg:block hidden font-[700] leading-[150%] rounded-[8px] text-[#092E76] py-[8px] px-[12px] border "
-                >
-                  Read More
-                </Link>
-              </div>
-              <div className="bg-[#DDDDDD]  w-fit rounded-[8px] py-[3px] px-[15px] hidden lg:flex flex-col  ">
-                    <h1 className="text-darkest text-[24px] font-[700]  ">14</h1>
-                    <h2 className="text-darkest text-[16px font-[400]">Nov</h2>
-                </div>
-              </div>
-              
-            </div>
-          </Link>
+          {posts.map((event)=>{
+            return <Link to="/nuesa">
+             <div className="shadow-xl px-[10px] py-[10px] border border-[#fff]   gap-[10px]  flex lg:flex-col items-start rounded-[12px]">
+               <img
+                 src={img}
+                 alt="news"
+                 className="w-[110px] lg:h-[100%] h-[110px] rounded lg:w-[100%] "
+               />
+               <div className="flex flex-row justify-around gap-[20px] items-center">
+               <div className="flex flex-col items-start gap-[22px max-w-[428px]">
+             
+                 <div className="flex flex-col gap-[5px] p-0 ">
+                   <p className="text-[12px] font-[700]  text-[#0000000] ">
+                     {event.title}
+                   </p>
+                   <span className="lg:text-[14px] text-[10px] font-[700] leading-[150%] text-[#888888] ">
+                   {event.date}
+                   </span>
+                   <p className="font-[400] text-[12px] block md:hidden lg:text-[16px] text-[#000000] ">
+                 {event.excerpt}
+                 </p>
+                 <p className="font-[400] hidden md:flex text-[12px] lg:text-[16px] text-[#000000] ">
+                 {event.body}
+                 </p>
+                 </div>
+                 <Link
+                   to="/nuesa"
+                   className="text-[16px] w-full text-center lg:block hidden font-[700] leading-[150%] rounded-[8px] text-[#092E76] py-[8px] px-[12px] border "
+                 >
+                   Read More
+                 </Link>
+               </div>
+               <div className="bg-[#DDDDDD]  w-fit rounded-[8px] py-[3px] px-[15px] hidden lg:flex flex-col  ">
+                     <h1 className="text-darkest text-[24px] font-[700]  ">14</h1>
+                     <h2 className="text-darkest text-[16px font-[400]">Nov</h2>
+                 </div>
+               </div>
+               
+             </div>
+           </Link>
+          })}
         </div>
       
 

@@ -1,9 +1,21 @@
-import React from "react";
+import {useEffect} from "react";
 import img from "../../assets/newsimage.svg";
 import { IoIosArrowBack, IoIosArrowForward, IoMdSearch } from "react-icons/io";
 import { Link } from "react-router-dom";
+import { getAllPosts } from "../../service/getAllPosts";
 
 export const NewsEvent = () => {
+  const [posts, setPosts] = useState([])
+  useEffect(()=>{
+    async function posts(){
+      setPosts(await getAllPosts())
+     }
+     posts()
+  }, [])
+  if(posts.length == 0){
+    return <h1>Loading.....</h1>
+  }
+  console.log(posts);
   return (
     <>
       <div className=" overflow-x-hidden">

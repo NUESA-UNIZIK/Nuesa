@@ -21,8 +21,8 @@ const isAdmin = (req, res, next) => {
 };
 
 //POST ROUTES
-postRouter.get("/posts", isAuthenticated, postController.getPost);
-postRouter.post("/posts", isAuthenticated, isAdmin, postController.createPost);
+postRouter.get("/posts",postController.getPost);
+postRouter.post("/posts", postController.createPost);
 postRouter.put("/posts",  isAuthenticated, isAdmin, postController.putPost);
 postRouter.delete("/posts",  isAuthenticated, isAdmin, postController.deleteAllPost);
 postRouter.get("/posts/:postId", isAuthenticated, isAdmin, postController.getSpecificPost);

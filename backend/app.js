@@ -37,7 +37,13 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
-app.use(cors());
+app.use(
+    cors({
+         origin: "http://127.0.0.1:5173", // allow to server to accept request from different origin
+         methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+         credentials: true, // allow session cookie from browser to pass through
+   })
+);
 
 app.use("", userRouter);
 app.use("/upload", uploadRoute)

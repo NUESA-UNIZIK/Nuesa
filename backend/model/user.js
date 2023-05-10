@@ -11,6 +11,12 @@ const userSchema = new Schema({
     googleId: {
         type: String
     },
+    department:{
+        type: String
+    },
+    level:{
+        type: String
+    },
     role: {
         type: String,
         enum: ["user", "admin", "superuser"],

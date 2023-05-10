@@ -28,7 +28,9 @@ exports.createPost = async (req, res) => {
     //Create a new post
     const post = new Post({
       title: req.body.title,
-      description: req.body.description,
+      body: req.body.body,
+      excerpt: req.body.excerpt,
+      slug: req.body.slug,
       photo: req.body.photo,
       admin: req.user._id
     });

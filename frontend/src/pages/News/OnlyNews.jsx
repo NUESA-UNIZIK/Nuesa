@@ -1,112 +1,64 @@
-import React from "react";
+import {useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import img from "../../assets/newsimage.svg";
 import { IoMdSearch } from "react-icons/io";
-
+import { getAllPosts } from "../../service/getAllPosts";
 
 export const OnlyNews = () => {
+  const [posts, setPosts] = useState([])
+  useEffect(()=>{
+    async function posts(){
+      setPosts(await getAllPosts())
+     }
+     posts()
+  }, [])
+  if(posts.length == 0){
+    return <h1>Loading.....</h1>
+  }
+  console.log(posts);
     return(
         <>
        
         <div className=" flex flex-col md:flex-row p-[30px] justify-center gap-[100px] items-start mt-[20px]">
         <div className="flex flex-col gap-[16px] justify-center items-start">
-          <div className=" shadow-xl py-[15px] px-[10px] border border-[#fff] gap-[10px]  flex lg:flex-col items-center rounded-[12px]">
-            <img
-              src={img}
-              alt="news"
-              className="w-[110px]   rounded lg:w-[100%] "
-            />
-            <div className="flex flex-col items-start gap-[22px max-w-[428px]">
-              <div className="flex flex-col gap-[5px] p-0 ">
-                <p className="text-[10px] lg:text-[12px] font-[700]  text-[#0000000] ">
-                  NUESA Inter-Departmental Football Cup kicks off
-                </p>
-                <span className="lg:text-[14px] text-[10px] font-[700] leading-[150%] text-[#888888] ">
-                  13th Feb 2023
-                </span>
-                <p className="font-[400] text-[12px] block md:hidden lg:text-[16px] text-[#000000] ">
-                Omnis maiores velit culpa sed corporis cum exercitationem...
-                </p>
-                <p className="font-[400] hidden md:flex text-[12px] lg:text-[16px] text-[#000000] ">
-                Omnis maiores velit culpa sed corporis cum exercitationem
-                    sit eum. Ea veritatis et nihil corporis nobis rem ratione
-                    quia nemo.
-                </p>
-              </div>
-              <Link
-                to="/nuesa"
-                className="text-[16px] w-full text-center lg:block hidden font-[700] leading-[150%] rounded-[8px] text-[#092E76] py-[8px] px-[12px] border "
-              >
-                Read More
-              </Link>
-            </div>
-          </div>
-          <div className="shadow-xl py-[15px] px-[10px] border border-[#fff] gap-[10px]  flex lg:flex-col items-center rounded-[12px]">
-            <img
-              src={img}
-              alt="news"
-              className="w-[110px]   rounded lg:w-[100%] "
-            />
-            <div className="flex flex-col items-start gap-[22px max-w-[428px]">
-              <div className="flex flex-col gap-[5px] p-0 ">
-                <p className="text-[10px] lg:text-[12px]  font-[700]  text-[#0000000] ">
-                  NUESA Inter-Departmental Football Cup kicks off
-                </p>
-                <span className="lg:text-[14px] text-[10px] font-[700] leading-[150%] text-[#888888] ">
-                  13th Feb 2023
-                </span>
-                <p className="font-[400] text-[12px] block md:hidden lg:text-[16px] text-[#000000] ">
-                Omnis maiores velit culpa sed corporis cum exercitationem...
-                </p>
-                <p className="font-[400] hidden md:flex text-[12px] lg:text-[16px] text-[#000000] ">
-                Omnis maiores velit culpa sed corporis cum exercitationem
-                    sit eum. Ea veritatis et nihil corporis nobis rem ratione
-                    quia nemo.
-                </p>
-              </div>
-              <Link
-                to="/nuesa"
-                className="text-[16px] w-full text-center lg:block hidden font-[700] leading-[150%] rounded-[8px] text-[#092E76] py-[8px] px-[12px] border "
-              >
-                Read More
-              </Link>
-            </div>
-          </div>
+          {posts.map((post)=>{
+                return(
 
-          <Link to="/nuesa">
-            <div className="shadow-xl px-[10px] py-[15px] border border-[#fff]   gap-[10px]  flex lg:flex-col items-center rounded-[12px]">
-              <img
-                src={img}
-                alt="news"
-                className="w-[110px] h-[100%]   rounded lg:w-[100%] "
-              />
-              <div className="flex flex-col items-start gap-[22px max-w-[428px]">
-                <div className="flex flex-col gap-[5px] p-0 ">
-                  <p className="text-[10px] lg:text-[12px]  font-[700]  text-[#0000000] ">
-                    NUESA Inter-Departmental Football Cup kicks off
-                  </p>
-                  <span className="lg:text-[14px] text-[10px] font-[700] leading-[150%] text-[#888888] ">
-                    13th Feb 2023
-                  </span>
-                  <p className="font-[400] text-[12px] block md:hidden lg:text-[16px] text-[#000000] ">
-                Omnis maiores velit culpa sed corporis cum exercitationem...
-                </p>
-                <p className="font-[400] hidden md:flex text-[12px] lg:text-[16px] text-[#000000] ">
-                Omnis maiores velit culpa sed corporis cum exercitationem
-                    sit eum. Ea veritatis et nihil corporis nobis rem ratione
-                    quia nemo.
-                </p>
-                </div>
-                <Link
-                  to="/nuesa"
-                  className="text-[16px] w-full text-center lg:block hidden font-[700] leading-[150%] rounded-[8px] text-[#092E76] py-[8px] px-[12px] border "
-                >
-                  Read More
-                </Link>
-              </div>
-            </div>
-          </Link>
-        </div>
+                  <Link to="/nuesa">
+                  <div className="shadow-xl px-[10px] py-[15px] border border-[#fff]   gap-[10px]  flex lg:flex-col items-center rounded-[12px]">
+                    <img
+                      src={img}
+                      alt="news"
+                      className="w-[110px] h-[100%]   rounded lg:w-[100%] "
+                    />
+                    <div className="flex flex-col items-start gap-[22px max-w-[428px]">
+                      <div className="flex flex-col gap-[5px] p-0 ">
+                        <p className="text-[10px] lg:text-[12px]  font-[700]  text-[#0000000] ">
+                          NUESA Inter-Departmental Football Cup kicks off
+                        </p>
+                        <span className="lg:text-[14px] text-[10px] font-[700] leading-[150%] text-[#888888] ">
+                          13th Feb 2023
+                        </span>
+                        <p className="font-[400] text-[12px] block md:hidden lg:text-[16px] text-[#000000] ">
+                      Omnis maiores velit culpa sed corporis cum exercitationem...
+                      </p>
+                      <p className="font-[400] hidden md:flex text-[12px] lg:text-[16px] text-[#000000] ">
+                      Omnis maiores velit culpa sed corporis cum exercitationem
+                          sit eum. Ea veritatis et nihil corporis nobis rem ratione
+                          quia nemo.
+                      </p>
+                      </div>
+                      <Link
+                        to="/nuesa"
+                        className="text-[16px] w-full text-center lg:block hidden font-[700] leading-[150%] rounded-[8px] text-[#092E76] py-[8px] px-[12px] border "
+                      >
+                        Read More
+                      </Link>
+                    </div>
+                  </div>
+                </Link>)
+         
+          })}
       
 
       <div className="lg:flex hidden flex-col items-start gap-[30px] w-[368px]">
@@ -216,6 +168,7 @@ export const OnlyNews = () => {
             Next
           </button>
         </div>
+</div>
 </div>
       </>
     )
