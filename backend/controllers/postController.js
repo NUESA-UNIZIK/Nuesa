@@ -72,7 +72,7 @@ exports.getSpecificPost = async (req, res) => {
   const { postId } = req.params;
   try {
     //Find the specific post with the given ID from the params then populate the comment and the owner fields
-    const post = await Post.findById(postId)
+    const post = await Post.find({slug:postId})
     .populate({
       path: "comments",
       populate: { path: "owner", select: "firstName" }
@@ -86,7 +86,7 @@ exports.getSpecificPost = async (req, res) => {
     return res.send({ post });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: "Server error" });
+    return res.status(500).json({ error: error.message });
   }
 }
 

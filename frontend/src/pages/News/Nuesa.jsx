@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import img from "../../assets/newsimage.svg";
 import { IoIosArrowBack, IoIosArrowForward, IoMdSearch } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { BiTimeFive } from "react-icons/bi";
 import { BsTag } from "react-icons/bs";
+import { getOnePost } from "../../service/postService";
 
 export const Nuesa = () => {
+  const {slug} = useParams()
     const [viewReply, setViewReply] = useState("hidden");
     const [replyButton, setReplyButton] = useState('Show More Replies')
+    const [post, setPost] = useState([])
     const showReply = () => {
         
         if (replyButton === 'Show More Replies' && viewReply === 'hidden') {
@@ -18,6 +21,13 @@ export const Nuesa = () => {
             setViewReply('hidden');
         }
     }
+    useEffect(()=>{
+      async function onePost(){
+        setPost( await getOnePost(slug))
+      }
+      onePost()
+    },[])
+    console.log(post)
   return (
     <>
       <div className=" overflow-x-hidden">
@@ -56,7 +66,7 @@ export const Nuesa = () => {
         </div>
         <div>
           <h1 className="text-[40px] lg:block hidden font-[700] text-center mx-[20px] my-[30px] ">
-            NUESA Inter-Departmental Football Cup kicks off
+           {post.title}
           </h1>
         </div>
         <div className=" flex flex-col md:flex-row p-[30px] justify-center gap-[100px] items-start mt-[50px]">
@@ -65,7 +75,7 @@ export const Nuesa = () => {
               <div className="flex flex-row gap-[32px] items-start ">
                 <span className="text-[#717171] text-[18px] font-[500] flex flex-row items-center ">
                   <BiTimeFive />
-                  Sun 10th Feb 2023
+                  {new Date(post.updatedAt).toLocaleDateString()}
                 </span>{" "}
                 <span className="text-[#717171] text-[18px] font-[500] flex flex-row items-center ">
                   <BsTag />
@@ -79,33 +89,17 @@ export const Nuesa = () => {
               />
               <div className="flex flex-col items-start font-[400] my-[30px] gap-[40px]">
                 <p className="font-[400] text-[18px] ">
-                  Aut non maiores et. Cum qui magni dolorem odit officia
-                  exercitationem et. Vitae culpa dolorem enim perspiciatis
-                  magnam qui. Veritatis et voluptatum aspernatur. Ducimus
-                  consequuntur porro eveniet voluptatem. Ut quas nihil est sit
-                  repellendus inventore et corporis.
+                  {post.body}
                 </p>
                 <p className="font-[400] text-[18px]">
-                  Exercitationem in corporis minus corrupti aperiam. Fuga
-                  dolorem praesentium hic. Id fuga saepe illum a tenetur. Et
-                  sint omnis officia et et velit numquam doloremque iste.
-                  Molestiae dolor et ut excepturi fugiat. Laborum maiores et
-                  odit aut velit vel dignissimos. In porro qui. Voluptates aut
-                  occaecati voluptatem voluptas similique non pariatur molestiae
-                  quod.
+                 {post.body}
                 </p>
                 <p className="font-[400] text-[18px]">
-                  Exercitationem in corporis minus corrupti aperiam. Fuga
-                  dolorem praesentium hic. Id fuga saepe illum a tenetur. Et
-                  sint omnis officia et et velit numquam doloremque iste.
-                  Molestiae dolor et ut excepturi fugiat. Laborum maiores et
-                  odit aut velit vel dignissimos. In porro qui. Voluptates aut
-                  occaecati voluptatem voluptas similique non pariatur molestiae
-                  quod.
+                {post.body}
                 </p>
               </div>
             </div>
-
+      {/* comments */}
             <div className="flex flex-col gap-5">
               <h1 className="font-[700] text-[24px] text-[#FA4F06] my-[20px] ">
                 COMMENTS (12)

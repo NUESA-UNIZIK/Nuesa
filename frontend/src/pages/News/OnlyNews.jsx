@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import img from "../../assets/newsimage.svg";
 import { IoMdSearch } from "react-icons/io";
-import { getAllPosts } from "../../service/getAllPosts";
+import { getAllPosts } from "../../service/postService";
 
 export const OnlyNews = () => {
   const [posts, setPosts] = useState([])
@@ -13,8 +13,10 @@ export const OnlyNews = () => {
      posts()
   }, [])
   if(posts.length == 0){
-    return <h1>Loading.....</h1>
+    return <h1>Loading....</h1>
   }
+  const featuredPosts = [{title: "LECTURERS CONFERENCE", date: " Nov 7, 2022, 3:00PM WAT", excerpt: " Omnis maiores velit culpa sed corporis cum exercitationem...", 
+  body:"Omnis maiores velit culpa sed corporis cum exercitationem sit eum. Ea veritatis et nihil corporis nobis rem ratione quia nemo."}]
   console.log(posts);
     return(
         <>
@@ -24,7 +26,7 @@ export const OnlyNews = () => {
           {posts.map((post)=>{
                 return(
 
-                  <Link to="/nuesa">
+                  <Link to={`/nuesa/${post.slug}`}>
                   <div className="shadow-xl px-[10px] py-[15px] border border-[#fff]   gap-[10px]  flex lg:flex-col items-center rounded-[12px]">
                     <img
                       src={img}
