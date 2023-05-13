@@ -6,6 +6,7 @@ import Navbar2 from "../../Homepage/Header/Navbar2";
 import axios from "axios"
 import { toast } from 'react-toastify';
 import {create} from "zustand"
+import { loginIn } from "../../service/registerService";
 
 
 const Login = () => {
@@ -17,7 +18,8 @@ const navigate = useNavigate()
 const data = {username,password}
  
 async function submit (){
-  const res = await axios.post("http://localhost:8000/users/login", data, { withCredentials: true })
+  const res = await loginIn(data)
+  console.log(res)
   const {error, status, message} = res.data
     if(status){
           toast.success(message)
