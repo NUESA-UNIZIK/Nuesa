@@ -34,7 +34,6 @@ function App() {
           <Route path="/achievement" element={<Achievements/>} />
           <Route path="/achievement/:id" element={<Achievementsscreen/>} />
           <Route path="/download" element={<Download/>} />
-          <Route path="/nuesa" element={<Nuesa/>} />
           <Route path="/allStaff" element={<Staff/>} />
          <Route path="/feg" element={<FEG/>} />
          <Route path="/settings" element={<Setting/>} />
@@ -43,6 +42,7 @@ function App() {
          <Route path="/aboutpresident" element={<Aboutpresident/>} />
          <Route path="/posts" element={<AllPosts/>} />
          <Route path="/post/:slug" element={<OnePost/>} />
+         <Route path="/nuesa/:slug" element={<Nuesa/>} />
         </Routes>
       </Router>
       <ToastContainer />

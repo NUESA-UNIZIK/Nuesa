@@ -2,7 +2,7 @@ import {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import img from "../../assets/achimg.png";
 import { IoMdSearch } from "react-icons/io";
-import { getAllPosts } from "../../service/getAllPosts";
+import { getAllPosts } from "../../service/postService";
 
 
 export const OnlyEvent = () => {
@@ -16,27 +16,26 @@ export const OnlyEvent = () => {
   if(posts.length == 0){
     return <h1>Loading.....</h1>
   }
-console.log(posts)
-  const events =[
-    {
-      title: "NUESA Inter-Departmental Football Cup kicks off",
-      date: "3th Feb 2023",
-      excerpt: "Omnis maiores velit culpa sed corporis cum exercitationem...",
-      body: "Omnis maiores velit culpa sed corporis cum exercitationem sit eum. Ea veritatis et nihil corporis nobis rem ratione quia nemo."
-    },
-    {
-      title: "NUESA Inter-Departmental Football Cup kicks off",
-      date: "3th Feb 2023",
-      excerpt: "Omnis maiores velit culpa sed corporis cum exercitationem...",
-      body: "Omnis maiores velit culpa sed corporis cum exercitationem sit eum. Ea veritatis et nihil corporis nobis rem ratione quia nemo."
-    },
-    {
-      title: "NUESA Inter-Departmental Football Cup kicks off",
-      date: "3th Feb 2023",
-      excerpt: "Omnis maiores velit culpa sed corporis cum exercitationem...",
-      body: "Omnis maiores velit culpa sed corporis cum exercitationem sit eum. Ea veritatis et nihil corporis nobis rem ratione quia nemo."
-    },
-  ]
+  // const events =[
+  //   {
+  //     title: "NUESA Inter-Departmental Football Cup kicks off",
+  //     date: "3th Feb 2023",
+  //     excerpt: "Omnis maiores velit culpa sed corporis cum exercitationem...",
+  //     body: "Omnis maiores velit culpa sed corporis cum exercitationem sit eum. Ea veritatis et nihil corporis nobis rem ratione quia nemo."
+  //   },
+  //   {
+  //     title: "NUESA Inter-Departmental Football Cup kicks off",
+  //     date: "3th Feb 2023",
+  //     excerpt: "Omnis maiores velit culpa sed corporis cum exercitationem...",
+  //     body: "Omnis maiores velit culpa sed corporis cum exercitationem sit eum. Ea veritatis et nihil corporis nobis rem ratione quia nemo."
+  //   },
+  //   {
+  //     title: "NUESA Inter-Departmental Football Cup kicks off",
+  //     date: "3th Feb 2023",
+  //     excerpt: "Omnis maiores velit culpa sed corporis cum exercitationem...",
+  //     body: "Omnis maiores velit culpa sed corporis cum exercitationem sit eum. Ea veritatis et nihil corporis nobis rem ratione quia nemo."
+  //   },
+  // ]
 
     return(
         <>
@@ -45,7 +44,7 @@ console.log(posts)
         <div className=" flex flex-col md:flex-row p-[30px] justify-center gap-[100px] items-start mt-[50px]">
         <div className="flex flex-col gap-[16px] justify-center items-start">
           {posts.map((event)=>{
-            return <Link to="/nuesa">
+          return <Link to={`/nuesa/${event.slug}`}>
              <div className="shadow-xl px-[10px] py-[10px] border border-[#fff]   gap-[10px]  flex lg:flex-col items-start rounded-[12px]">
                <img
                  src={img}

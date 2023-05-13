@@ -2,10 +2,13 @@
   "name": "tezon",
   "version": "1.0.0",
   "description": "",
+  "proxy": "http://localhost:8000",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app"
+    "server": "nodemon backend/app.js",
+    "start": "node backend/app.js",
+    "client": "npm run dev --prefix frontend"
   },
   "author": "Davheed",
   "license": "ISC",
