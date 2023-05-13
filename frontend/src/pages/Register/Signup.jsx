@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Footer from "../../Homepage/Footer/Footer";
 import Navbar2 from "../../Homepage/Header/Navbar2";
 import axios from 'axios'
+import { signUp } from "../../service/registerService";
 
 
 const Signup = () => {
@@ -17,10 +18,10 @@ const Signup = () => {
   
   const data = {firstName,username,department,level,password}
   async function submit(){
-    const res = await axios.post("http://localhost:8000/users/register", data)
+    const res = await signUp(data)
     toast(res.data.message)
-    console.log(res)
   }
+ 
 
 
   return (
