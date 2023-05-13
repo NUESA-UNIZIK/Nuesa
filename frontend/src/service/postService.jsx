@@ -1,7 +1,7 @@
 import axios from "axios"
 
 //get all posts
-const url = "http://localhost:8000/posts"
+const url = "/posts"
 export async function getAllPosts (){
     const response = await axios.get(url)
     
