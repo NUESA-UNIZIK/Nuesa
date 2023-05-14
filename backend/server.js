@@ -51,11 +51,17 @@ app.use("", postRouter);
 app.use("/posts", commentRoutes);
 app.use("", resetRoutes);
 
-//Unhandled routes
-app.all("*", (req,res) => {
-    res.status(404).send("Sorry, the requested route was not found");
-});
-
+// displaying frontend
+if (process.env.NODE_ENV === 'production'){
+    app.use(express.static(path.join(__dirname, '../frontend/dist')))
+    app.get('*', (req,res)=>{
+        res.sendFile(path.resolve(__dirname, "../", "frontend", "dist", "index.html"))
+    })
+}else{
+    app.get('/', (req, res)=>{
+        res.send('please set to production')
+    })
+}
 
 //CONNECTIONS
 mongoose.set('strictQuery', true);
