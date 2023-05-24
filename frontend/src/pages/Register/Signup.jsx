@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { IoIosArrowForward } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import {toast} from 'react-toastify'
 import Footer from "../../Homepage/Footer/Footer";
 import Navbar2 from "../../Homepage/Header/Navbar2";
 import axios from 'axios'
@@ -15,11 +16,18 @@ const Signup = () => {
   const [password, setPassword] = useState("")
   const [password2, setPassword2] = useState("")
 
+  const navigate = useNavigate()
   
   const data = {firstName,username,department,level,password}
-  async function submit(){
-    const res = await signUp(data)
-    toast(res.data.message)
+  async function submit(){ 
+    if(password !== password2){
+      toast('Passwords do not match')
+    }else if(password === password2){
+      const res = await signUp(data)
+      res.data.message ?
+       toast(res.data.message) && navigate('/login')
+      : toast(res.data.err)
+    }
   }
  
 
