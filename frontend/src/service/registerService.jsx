@@ -9,5 +9,7 @@ export const signUp = async(data)=>{
   }
 export const loginIn = async(data)=>{
     const res = await axios.post(url + "login", data)
+    .then((res)=> res)
+    .catch((err)=>err.response)
     return (res)
   }
