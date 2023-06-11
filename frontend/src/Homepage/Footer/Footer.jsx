@@ -7,7 +7,7 @@ const Footer = () => {
     <div className="bg-[#000C23] mx-auto w-full mt-[2rem] md:mt-[5rem]">
       <div className="lg:mx-[6rem] mx-6">
         <div className="grid grid-cols-2 lg:grid-cols-3 md:gap-[10rem] gap-6 justify-between">
-          <div className="md:w-[379px] mt-12">
+          <div className="md:w-[379px] hidden lg:block mt-12">
             <h1 className="font-bold md:text-[22px] mb-2 text-white">FACULTY OF ENGINEERING UNIZIK</h1>
             <p className="text-[#E9EBEC] mb-2">
               Omnis maiores velit culpa sed corporis cum exercitationem sit eum.
