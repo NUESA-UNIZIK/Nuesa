@@ -105,20 +105,6 @@ function urlFor(source) {
           </button>)
           })}
         </div>
-{/* 
-        // mobile view */}
-
-        {/* <div className="ml-10">
-          <div className="flex md:hidden gap-2 text-[14px] px-4 justify-center md:flex-row">
-          {depts.map((dept, i)=>{
-              return( <button onClick={()=>choose(dept, i)}   key={dept.name} className={dept.clicked?"bg-primary text-[#FFEFE6] px-3 py-2 font-semibold rounded-[8px]":"text-primary bg-[#FFEFE6] px-3 py-2 font-semibold rounded-[8px]"}>
-              {dept.name} 
-            </button>)
-            })}
-          </div>
-
-        </div> */}
-
 
         {/* // desktop view */}
 
