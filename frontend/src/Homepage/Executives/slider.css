@@ -64,9 +64,9 @@
   left: 12%;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 1024px) {
   .productSlider .swiper-button-prev {
-    left: -3%;
+    left: 1%;
     background: none;
     border-radius: none !important;
     box-shadow: none !important;
@@ -84,7 +84,7 @@
     font-weight: bolder;
   }
   .productSlider .swiper-button-next {
-    right: -3%;
+    right: 1%;
     top: 32%;
     background: none;
     border-radius: none !important;

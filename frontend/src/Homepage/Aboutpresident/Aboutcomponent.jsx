@@ -4,12 +4,8 @@ import { Link } from "react-router-dom";
 
 const Aboutcomponent = () => {
   return (
-    <div className="xl:mx-[6rem] mt-6 mx-6">
-      <div>
-        <h1 className="font-bold  md:text-[24px] mb-1">ABOUT THE PRESIDENT</h1>
-        <hr className="w-[5%] border-2 border-primary" />
-      </div>
-      <div className="flex lg:flex-row gap-8 flex-col mt-8">
+    <div className="xl:mx-[6rem]  mt-6 mx-6">
+      <div className="flex mx-auto md:items-center justify-center lg:flex-row gap-8 flex-col mt-8">
         <div>
           <img
             src={Presidentimg1}
@@ -18,8 +14,8 @@ const Aboutcomponent = () => {
           />
         </div>
 
-        <div className="md:w-[667px]">
-          <h1 className="font-semibold md:w-[557px] w-[317px] text-[16px] md:text-[20px]">
+        <div className="lg:w-[667px]">
+          <h1 className="font-semibold xl:w-[557px] lg:-mt-[7rem] md:w-full w-[317px] text-[16px] md:text-[20px]">
             Brief Citation of Akpa Emmanuel, The President Nigerian
             Universities Engineering Students Association, UNIZIK (NUESA UNIZIK)
           </h1>

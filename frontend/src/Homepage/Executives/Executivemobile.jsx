@@ -11,7 +11,7 @@ import { executivemobie } from "../../data";
 const Executivemobile = () => {
   const { contents } = executivemobie;
   return (
-    <div className="bg-[#F5F5F5] block md:hidden py-4 h-[353px]">
+    <div className="bg-[#F5F5F5] block lg:hidden py-4 h-[353px]">
       <div className="xl:mx-[6rem] mx-6">
         <div>
           <h1 className="font-bold  md:text-[24px] mb-1">
@@ -36,7 +36,7 @@ const Executivemobile = () => {
         {contents.map((content, index) => {
           return (
             <SwiperSlide key={index}>
-              <div className="grid grid-cols-1  mx-[1.9rem] justify-center items-center">
+              <div className="flex mx-auto justify-center items-center">
                 {content.executiveslider.map((items, index) => {
                   return (
                     <div

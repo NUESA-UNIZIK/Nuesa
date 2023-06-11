@@ -58,7 +58,7 @@ function urlFor(source) {
     <Navbar2/>
       <div className="text-center">
         <div className="text-center md:py-[80px] md:mt-[6.3rem] mt-[4rem] py-[20px] bg-cover  h-[85px]  bg-[url('/src/assets/heroimage.svg')]">
-          <h1 className="md:text-[48px] md:-mt-8 hidden md:block text-[24px] text-white uppercase  font-[700] ">
+          <h1 className="md:text-[48px] md:-mt-8  text-[24px] text-white uppercase  font-[700] ">
             ACHIEVEMENTS
           </h1>
         </div>
@@ -96,7 +96,7 @@ function urlFor(source) {
           </div>
         </div>
 
-        <div className="mt-6 md:flex hidden md:flex-row  my-[30px] align-center justify-center  gap-[10px] ">
+        <div className="mt-6 md:flex space-x-2 space-y-2 md:space-x-0 md:space-y-0 md:flex-row  my-[30px] align-center justify-center  gap-[10px] ">
           {depts.map((dept, i)=>{
             return( <button onClick={()=>choose(dept, i)} 
             key={dept.name} 
@@ -105,16 +105,20 @@ function urlFor(source) {
           </button>)
           })}
         </div>
+{/* 
+        // mobile view */}
 
-        {/* // mobile view */}
+        {/* <div className="ml-10">
+          <div className="flex md:hidden gap-2 text-[14px] px-4 justify-center md:flex-row">
+          {depts.map((dept, i)=>{
+              return( <button onClick={()=>choose(dept, i)}   key={dept.name} className={dept.clicked?"bg-primary text-[#FFEFE6] px-3 py-2 font-semibold rounded-[8px]":"text-primary bg-[#FFEFE6] px-3 py-2 font-semibold rounded-[8px]"}>
+              {dept.name} 
+            </button>)
+            })}
+          </div>
 
-        <div className="flex md:hidden gap-2 text-[14px] px-4 justify-center md:flex-row">
-        {depts.map((dept, i)=>{
-            return( <button onClick={()=>choose(dept, i)}   key={dept.name} className={dept.clicked?"bg-primary text-[#FFEFE6] px-3 py-2 font-semibold rounded-[8px]":"text-primary bg-[#FFEFE6] px-3 py-2 font-semibold rounded-[8px]"}>
-            {dept.name} 
-          </button>)
-          })}
-        </div>
+        </div> */}
+
 
         {/* // desktop view */}
 

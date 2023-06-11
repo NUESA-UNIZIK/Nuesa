@@ -6,14 +6,14 @@ const Footer = () => {
   return (
     <div className="bg-[#000C23] mx-auto w-full mt-[2rem] md:mt-[5rem]">
       <div className="lg:mx-[6rem] mx-6">
-        <div className="flex flex-col md:flex-row justify-between">
+        <div className="grid grid-cols-2 lg:grid-cols-3 md:gap-[10rem] gap-6 justify-between">
           <div className="md:w-[379px] mt-12">
             <h1 className="font-bold md:text-[22px] mb-2 text-white">FACULTY OF ENGINEERING UNIZIK</h1>
             <p className="text-[#E9EBEC] mb-2">
               Omnis maiores velit culpa sed corporis cum exercitationem sit eum.
               Ea veritatis et nihil corporis nobis rem ratione quia nemo.
             </p>
-            <img src={Logo} alt="" className="w-[98px]" />
+            <img src={Logo} alt="" className="w-[98px] hidden md:block" />
           </div>
 
           <div className="mt-12 leading-[3rem]">
