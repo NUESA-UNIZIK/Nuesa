@@ -7,17 +7,24 @@ const Aboutcomponent = () => {
     <div className="xl:mx-[6rem]  mt-6 mx-6">
       <div className="flex mx-auto md:items-center justify-center lg:flex-row gap-8 flex-col mt-8">
         <div>
+          <h1 className="font-bold lg:text-[24px] text-[18px] ">
+            ABOUT THE PRESIDENT
+          </h1>
+          <hr className="w-[8%] border-2 border-primary mb-2" />
+
+        </div>
+        <div>
           <img
             src={Presidentimg1}
-            className="md:w-[430px] w-[317px] rounded-md"
+            className="md:w-[430px] mx-auto w-[317px] rounded-md"
             alt=""
           />
         </div>
 
         <div className="lg:w-[667px]">
           <h1 className="font-semibold xl:w-[557px] lg:-mt-[7rem] md:w-full w-[317px] text-[16px] md:text-[20px]">
-            Brief Citation of Akpa Emmanuel, The President Nigerian
-            Universities Engineering Students Association, UNIZIK (NUESA UNIZIK)
+            Brief Citation of Akpa Emmanuel, The President Nigerian Universities
+            Engineering Students Association, UNIZIK (NUESA UNIZIK)
           </h1>
           <p className="mt-[16px] text-[16px] md:block hidden">
             Sit quia consequatur voluptatibus deserunt. Quos fugiat dolor. Sit
@@ -39,7 +46,7 @@ const Aboutcomponent = () => {
             consequatur quia. Nisi soluta architecto dolore et totam ut
             placeat...
           </p>
-          <Link to='/aboutpresident'>
+          <Link to="/aboutpresident">
             <button className="text-primary border-[1.5px] px-4 py-1 mt-[16px] md:text-[16px] text-[14px] rounded-md font-bold border-buttonborder border-solid">
               View more
             </button>
