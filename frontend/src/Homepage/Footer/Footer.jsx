@@ -4,9 +4,9 @@ import Logo from '../../assets/nuesalogo.svg'
 
 const Footer = () => {
   return (
-    <div className="bg-[#000C23] mx-auto w-full mt-[2rem] md:mt-[5rem]">
+    <div className="bg-[#000C23] mx-auto  mt-[2rem] md:mt-[5rem]">
       <div className="lg:mx-[6rem] mx-6">
-        <div className="grid grid-cols-2 lg:grid-cols-3 md:gap-[10rem] gap-6 justify-between">
+        <div className="grid grid-cols-2 lg:grid-cols-3 md:gap-[10rem] gap-2 justify-between">
           <div className="md:w-[379px] hidden lg:block mt-12">
             <h1 className="font-bold md:text-[22px] mb-2 text-white">FACULTY OF ENGINEERING UNIZIK</h1>
             <p className="text-[#E9EBEC] mb-2">
@@ -17,8 +17,8 @@ const Footer = () => {
           </div>
 
           <div className="mt-12 leading-[3rem]">
-            <h1 className="font-bold text-white text-[22px]">USEFUL LINKS</h1>
-            <ul className="text-[#E9EBEC]">
+            <h1 className="font-bold text-white md:text-[22px]">USEFUL LINKS</h1>
+            <ul className="text-[#E9EBEC] text-[14px]">
               <li>Courses</li>
               <li>Admission</li>
               <li>Faculty bio</li>
@@ -28,10 +28,10 @@ const Footer = () => {
           </div>
 
           <div className="mt-12 leading-[3rem]">
-            <h1 className="font-bold text-[22px] text-white">CONTACT</h1>
-            <ul className="text-[#E9EBEC]">
+            <h1 className="font-bold md:text-[22px] text-white">CONTACT</h1>
+            <ul className="text-[#E9EBEC] text-[14px]">
               <li>+2348020708683</li>
-              <li>smart.okolichiaza@gmail.com</li>
+              <li>smart.okolic@gmail.com</li>
             </ul>
           </div>
         </div>

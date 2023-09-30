@@ -5,14 +5,8 @@ import { Link } from "react-router-dom";
 const Aboutcomponent = () => {
   return (
     <div className="xl:mx-[6rem]  mt-6 mx-6">
+       
       <div className="flex mx-auto md:items-center justify-center lg:flex-row gap-8 flex-col mt-8">
-        <div>
-          <h1 className="font-bold lg:text-[24px] text-[18px] ">
-            ABOUT THE PRESIDENT
-          </h1>
-          <hr className="w-[8%] border-2 border-primary mb-2" />
-
-        </div>
         <div>
           <img
             src={Presidentimg1}

@@ -6,10 +6,10 @@ const Navmobile = () => {
     <nav className="bg-white shadow-2xl w-[60%] h-full">
       <ul className="text-center h-full flex flex-col items-center justify-center gap-y-6">
         <Link
-          to="/courses"
+          to="/billing"
           className="text-[14px]"
         >
-          Courses
+          Bills
         </Link>
         <Link
           to="/facultybio"

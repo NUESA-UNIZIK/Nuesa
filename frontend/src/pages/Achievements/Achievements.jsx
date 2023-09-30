@@ -56,7 +56,7 @@ function urlFor(source) {
   return (
     <>
     <Navbar2/>
-      <div className="text-center">
+      <div className="text-center overflow-x-hidden">
         <div className="text-center md:py-[80px] md:mt-[6.3rem] mt-[4rem] py-[20px] bg-cover  h-[85px]  bg-[url('/src/assets/heroimage.svg')]">
           <h1 className="md:text-[48px] md:-mt-8  text-[24px] text-white uppercase  font-[700] ">
             ACHIEVEMENTS

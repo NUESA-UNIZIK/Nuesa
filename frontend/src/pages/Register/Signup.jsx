@@ -34,8 +34,8 @@ const Signup = () => {
 
   return (
     <div className="mx-auto">
-      <Navbar2/>
-      <div className="text-center md:py-[80px] py-[20px] md:mt-[6.3rem] mt-[4rem] bg-cover  h-[85px]  bg-[url('/src/assets/heroimage.svg')]">
+    
+      <div className="text-center md:py-[80px] py-[20px]  bg-cover  h-[85px]  bg-[url('/src/assets/heroimage.svg')]">
         <h1 className="md:text-[48px] -mt-8 hidden md:block text-[24px] text-white uppercase relative  font-[700] ">
           Create Account
         </h1>

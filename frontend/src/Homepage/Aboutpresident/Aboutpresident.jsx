@@ -12,15 +12,15 @@ const Aboutpresident = () => {
   const [mobileNav, setMobileNav] = useState(false);
 
   return (
-    <div>
-      <Navbar2 />
-      <div className="text-center md:py-[80px] mt-[4rem] md:mt-[6.3rem] py-[20px] bg-cover  h-[85px]  bg-[url('/src/assets/heroimage.svg')]">
+    <div className="w-full">
+      {/* <Navbar2 /> */}
+      <div className="text-center py-[20px] md:py-[80px] bg-cover  bg-no-repeat w-full  h-[85px]  bg-[url('/src/assets/heroimage.svg')]">
         <h1 className="md:text-[48px] md:-mt-8  text-[24px] text-white uppercase font-[700] ">
           About the President
         </h1>
       </div>
 
-      <div className="flex flex-row my-[30px] items-center align-center justify-center md:mt-[30px] mt-[20px]   gap-[4px] ">
+      <div className="flex flex-row my-[30px] items-center align-center justify-center md:mt-[30px] mt-[90px]   gap-[4px] ">
         <Link
           to="/"
           href=""
