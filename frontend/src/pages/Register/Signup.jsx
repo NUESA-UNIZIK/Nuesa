@@ -36,12 +36,12 @@ const Signup = () => {
     <div className="mx-auto">
     
       <div className="text-center md:py-[80px] py-[20px]  bg-cover  h-[85px]  bg-[url('/src/assets/heroimage.svg')]">
-        <h1 className="md:text-[48px] -mt-8 hidden md:block text-[24px] text-white uppercase relative  font-[700] ">
+        <h1 className="md:text-[48px] text-center -mt-8 hidden md:block text-[24px] text-white uppercase relative  font-[700] ">
           Create Account
         </h1>
-        <div className="flex px-6 items-center justify-between">
+        <div className="flex px-6 items-center justify-center">
           <div className="lg:hidden">
-            <h1 className="md:text-[48px] text-[24px] text-white uppercase relative  font-[700] ">
+            <h1 className="md:text-[48px]  text-[24px] text-white uppercase relative  font-[700] ">
               Create Account
             </h1>
           </div>
