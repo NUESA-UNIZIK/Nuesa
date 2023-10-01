@@ -108,7 +108,7 @@ function urlFor(source) {
 
         {/* // desktop view */}
 
-        <div className="gap-[1rem]  md:px-[4rem] px-[1rem]  flex  xl:grid md:grid-cols-3 lg:grid-cols-3 grid-cols-1 my-[30px] items-center align-center justify-center">
+        <div className="gap-[1rem]  md:px-[4rem] px-[1rem] xl:grid md:grid-cols-3 lg:grid-cols-3 grid-cols-1 my-[30px] items-center align-center justify-center">
           {posts.map((article, index) => {
             return (
               <div key={index} className="bg-white shadow-2xl mt-4 md:mt-0 rounded-[12px] md:h-[427px] w-[316px] md:w-[367px]">
