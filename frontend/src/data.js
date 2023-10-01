@@ -175,12 +175,11 @@ export const executives = {
       executiveslider: [
         {
           _id: "1",
-          image: Executiveimage,
-          name: "Comr.Akpa Emmanuel",
+          image: "https://res.cloudinary.com/mmainspire/image/upload/v1696179355/NUESA/President_v68pbi.jpg",
+          name: "Comr.Iheme Prince Lawrence",
           postion: "President",
-          department: "Chemical Engineering",
-          phonenum: "08180010995",
-          email: "admins@gmail.com",
+          department: "Electrical Engineering",
+          phonenum: "07054253708",
         },
         {
           _id: "1",
@@ -205,7 +204,7 @@ export const executives = {
         },
         {
           _id: "1",
-          image: "https://res.cloudinary.com/mmainspire/image/upload/v1696026464/NUESA/hugo_osnjb5.jpg",
+          image: "https://res.cloudinary.com/mmainspire/image/upload/v1696179639/NUESA/Hugo2_bidwhq.jpg",
           name: "Comr.Muoghalu Ugochukwu Divine",
           postion: "Sec Gen",
           department: "Industrial and production engineering",
@@ -301,12 +300,11 @@ export const executivemobie = {
       executiveslider: [
         {
           _id: "1",
-          image: Executiveimage,
-          name: "Comr.Akpan Emmanuel",
+          image: "https://res.cloudinary.com/mmainspire/image/upload/v1696179355/NUESA/President_v68pbi.jpg",
+          name: "Comr.Iheme Prince Lawrence",
           postion: "President",
-          department: "Chemical Engineering",
-          phonenum: "08098240363",
-          email: "admins@gmail.com",
+          department: "Electrical Engineering",
+          phonenum: "07054253708",
         },
       ],
     },
@@ -339,7 +337,7 @@ export const executivemobie = {
       executiveslider: [
         {
           _id: "4",
-          image: "https://res.cloudinary.com/mmainspire/image/upload/v1696026464/NUESA/hugo_osnjb5.jpg",
+          image: "https://res.cloudinary.com/mmainspire/image/upload/v1696179639/NUESA/Hugo2_bidwhq.jpg",
           name: "Comr.Muoghalu Ugochukwu Divine",
           postion: "Sec Gen",
           department: "Industrial and production engineering",

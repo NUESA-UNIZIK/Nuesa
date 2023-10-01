@@ -43,20 +43,16 @@ const Aboutpresident = () => {
       <div className="flex flex-col my-[30px] items-center align-center justify-center md:mt-[30px] mt-[20px]  gap-[4px] ">
         <div className="flex md:flex-row flex-col gap-4">
           <img
-            src={Presidentimg1}
+            src="https://res.cloudinary.com/mmainspire/image/upload/v1696179355/NUESA/President_v68pbi.jpg"
             className="md:w-[430px] w-[317px] rounded-md"
             alt=""
           />
-          <img
-            src={Presidentimg2}
-            className="md:w-[430px] w-[317px] rounded-md"
-            alt=""
-          />
+         
         </div>
 
         <div className="md:w-[871px] md:px-0 px-5 mt-4">
           <h1 className="font-semibold  text-[16px] md:text-[1.75rem]">
-            Brief Citation of Akpa Emmanuel, The President Nigerian
+            Brief Citation of Iheme Prince Lawrence, The President Nigerian
             Universities Engineering Students Association, UNIZIK (NUESA UNIZIK)
           </h1>
           <p className="mt-[16px] text-[14px] md:text-[16px]">

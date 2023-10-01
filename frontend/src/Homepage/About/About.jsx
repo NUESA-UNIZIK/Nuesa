@@ -1,5 +1,5 @@
 import React from "react";
-import Aboutimage from "../../assets/about.svg";
+import Aboutimage from "../../assets/Engineering.png";
 
 const About = () => {
   return (
@@ -10,8 +10,8 @@ const About = () => {
             ABOUT NUESA ENGINEERING
           </h1>
           <hr className="w-[8%] border-2 border-primary mb-8" />
-          <div className="md:hidden mb-3">
-            <img src={Aboutimage} alt="" className="w-[509px]" />
+          <div className="md:hidden  mb-3">
+            <img src={Aboutimage} alt="" className="w-[509px] rounded-md" />
           </div>
           <p className="lg:w-[82%] md:w-[96%] md:text-[16px] text-[14px] mb-2 md:mb-8">
             Ea sit magni quas vel consequatur tempora fugit voluptatem. Aliquid
@@ -35,8 +35,8 @@ const About = () => {
           </button>
         </div>
 
-        <div className="h-[400px] hidden md:block">
-          <img src={Aboutimage} alt="" className="w-[509px]" />
+        <div className=" hidden md:block">
+          <img src={Aboutimage} alt="" className="w-[509px] h-[392px] rounded-md" />
         </div>
       </div>
     </div>
