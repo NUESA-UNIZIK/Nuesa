@@ -18,7 +18,7 @@ const uploadRoute = require("./routes/uploadRoutes")
 const commentRoutes = require("./routes/commentRouter");
 const resetRoutes = require("./routes/resetPasswordRouter");
 const postRouter = require("./routes/postRouter");
-const payment = require("./payment/paymetController")
+const payment = require("./controllers/paymetController")
 const app = express();
 
 //INITIALIZE
