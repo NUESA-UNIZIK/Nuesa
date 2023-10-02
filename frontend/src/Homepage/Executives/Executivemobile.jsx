@@ -52,7 +52,7 @@ const Executivemobile = () => {
                         <ul className="list-disc leading-[1.5rem] px-6 items-center">
                           <li>{items.department}</li>
                           <li>{items.phonenum}</li>
-                          <li> {items.email} </li>
+                          {/* <li> {items.email} </li> */}
                         </ul>
                       </div>
                     </div>

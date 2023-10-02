@@ -55,9 +55,9 @@ function urlFor(source) {
   
   return (
     <>
-    <Navbar2/>
-      <div className="text-center">
-        <div className="text-center md:py-[80px] md:mt-[6.3rem] mt-[4rem] py-[20px] bg-cover  h-[85px]  bg-[url('/src/assets/heroimage.svg')]">
+    {/* <Navbar2/> */}
+      <div className="text-center overflow-x-hidden">
+        <div className="text-center md:py-[80px] py-[20px] bg-cover  h-[85px]  bg-[url('/src/assets/heroimage.svg')]">
           <h1 className="md:text-[48px] md:-mt-8  text-[24px] text-white uppercase  font-[700] ">
             ACHIEVEMENTS
           </h1>
@@ -108,7 +108,7 @@ function urlFor(source) {
 
         {/* // desktop view */}
 
-        <div className="gap-[1rem]  md:px-[4rem] px-[1rem]  xl:grid md:grid-cols-3 lg:grid-cols-3 grid-cols-1 my-[30px] items-center align-center justify-center">
+        <div className="gap-[1rem]  md:px-[4rem] px-[1rem] xl:grid md:grid-cols-3 lg:grid-cols-3 grid-cols-1 my-[30px] items-center align-center justify-center">
           {posts.map((article, index) => {
             return (
               <div key={index} className="bg-white shadow-2xl mt-4 md:mt-0 rounded-[12px] md:h-[427px] w-[316px] md:w-[367px]">

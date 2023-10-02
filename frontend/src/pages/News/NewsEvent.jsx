@@ -48,12 +48,12 @@ const newsHandle = () => {
    
       <div className=" overflow-x-hidden">
         <div className=" text-center py-[30px] bg-cover fixed top-0 right-0 left-0  bg-[url('/src/assets/heroimage.svg')]">
-          <h1 className="text-[48px] text-white uppercase relative  font-[700] ">
+          <h1 className="md:text-[48px] text-[24px] text-white uppercase relative  font-[700] ">
             News/Event
           </h1>
         </div>
 
-        <div className="flex flex-row my-[0px] mt-[150px] align-center justify-center   gap-[10px] ">
+        <div className="flex flex-row my-[0px] mt-[130px] align-center justify-center   gap-[10px] ">
           <Link to="/" className="text-[16px] font-[500] leading-[19.36px] ">
             Home
           </Link>

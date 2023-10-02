@@ -20,6 +20,9 @@ import OnePost from "./posts/OnePost";
 import { ToastContainer,  } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Payment from "./pay/Payment";
+import Billing from "./pages/Bills";
+import Invoice from "./pages/Bills/Invoice";
+
 
 function App() {
   return (
@@ -38,6 +41,8 @@ function App() {
           <Route path="/allStaff" element={<Staff/>} />
          <Route path="/feg" element={<FEG/>} />
          <Route path="/settings" element={<Setting/>} />
+         <Route path="/billing" element={<Billing/>} />
+         <Route path="/invoice" element={<Invoice/>} />
          <Route path="/register" element={<Signup/>} />
          <Route path="/login" element={<Login/>} />
          <Route path="/aboutpresident" element={<Aboutpresident/>} />

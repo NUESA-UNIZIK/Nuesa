@@ -5,17 +5,11 @@ import { Link } from "react-router-dom";
 const Aboutcomponent = () => {
   return (
     <div className="xl:mx-[6rem]  mt-6 mx-6">
+       
       <div className="flex mx-auto md:items-center justify-center lg:flex-row gap-8 flex-col mt-8">
         <div>
-          <h1 className="font-bold lg:text-[24px] text-[18px] ">
-            ABOUT THE PRESIDENT
-          </h1>
-          <hr className="w-[8%] border-2 border-primary mb-2" />
-
-        </div>
-        <div>
           <img
-            src={Presidentimg1}
+            src="https://res.cloudinary.com/mmainspire/image/upload/v1696179355/NUESA/President_v68pbi.jpg"
             className="md:w-[430px] mx-auto w-[317px] rounded-md"
             alt=""
           />
@@ -23,7 +17,7 @@ const Aboutcomponent = () => {
 
         <div className="lg:w-[667px]">
           <h1 className="font-semibold xl:w-[557px] lg:-mt-[7rem] md:w-full w-[317px] text-[16px] md:text-[20px]">
-            Brief Citation of Akpa Emmanuel, The President Nigerian Universities
+            Brief Citation of Iheme Prince Lawrence, The President Nigerian Universities
             Engineering Students Association, UNIZIK (NUESA UNIZIK)
           </h1>
           <p className="mt-[16px] text-[16px] md:block hidden">

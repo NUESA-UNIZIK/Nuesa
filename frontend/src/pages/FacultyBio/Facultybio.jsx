@@ -10,12 +10,12 @@ export const FacultyBio = () => {
     <>
       <div className=" overflow-x-hidden">
         <div className=" text-center py-[30px] bg-cover  bg-[url('/src/assets/heroimage.svg')] fixed left-0 right-0 top-0">
-          <h1 className="text-[48px] text-white uppercase relative  font-[700] ">
+          <h1 className="md:text-[48px] text-[24px] text-white uppercase relative  font-[700] ">
             Faculty Bio
           </h1>
         </div>
 
-        <div className="flex flex-row my-[30px] align-center justify-center mt-[150px]   gap-[10px] ">
+        <div className="flex flex-row my-[30px] align-center justify-center mt-[130px]   gap-[10px] ">
           <Link
             to="/"
             href=""

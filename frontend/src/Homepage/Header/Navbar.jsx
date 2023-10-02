@@ -57,10 +57,10 @@ const Navbar = () => {
           </div>
           <ul className="md:flex text-white container justify-center md:gap-[22px]">
             <Link
-              to="/courses"
+              to="/billing"
               className="bg-secondary/[44%] font-semibold px-4 py-2 rounded-md text-[16px]"
             >
-              COURSES
+              Bills
             </Link>
             <Link
               to="/facultybio"
