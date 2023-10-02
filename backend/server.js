@@ -18,7 +18,7 @@ const uploadRoute = require("./routes/uploadRoutes")
 const commentRoutes = require("./routes/commentRouter");
 const resetRoutes = require("./routes/resetPasswordRouter");
 const postRouter = require("./routes/postRouter");
-
+const payment = require("./payment/paymetController")
 const app = express();
 
 //INITIALIZE
@@ -39,7 +39,7 @@ app.use(passport.session());
 app.use(flash());
 app.use(
     cors({
-         origin: "http://127.0.0.1:5173", // allow to server to accept request from different origin
+         origin: "http://localhost:5173", // allow to server to accept request from different origin
          methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
          credentials: true, // allow session cookie from browser to pass through
    })
@@ -50,6 +50,7 @@ app.use("/upload", uploadRoute)
 app.use("", postRouter);
 app.use("/posts", commentRoutes);
 app.use("", resetRoutes);
+app.use("/api", payment)
 
 // displaying frontend
 if (process.env.NODE_ENV === 'production'){

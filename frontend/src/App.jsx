@@ -19,8 +19,10 @@ import AllPosts from "./posts/AllPosts";
 import OnePost from "./posts/OnePost";
 import { ToastContainer,  } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Payment from "./pay/Payment";
 import Billing from "./pages/Bills";
 import Invoice from "./pages/Bills/Invoice";
+
 
 function App() {
   return (
@@ -47,6 +49,7 @@ function App() {
          <Route path="/posts" element={<AllPosts/>} />
          <Route path="/post/:slug" element={<OnePost/>} />
          <Route path="/nuesa/:slug" element={<Nuesa/>} />
+         <Route path="/payment" element={<Payment/>}/>
         </Routes>
       </Router>
       <ToastContainer />
