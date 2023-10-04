@@ -6,9 +6,7 @@ route.get("/payment", (req, res)=>{
     res.status(200).json({data: "hello"})
 })
 
-const ref = "0p9bkm0928"
-const email = "anaguchidiebere@gmail.com"
-const amount = 30000
+const reference = new Date().getTime().toString().slice(0, 12)
 const callback_url = "http://localhost:5173"
 const url = "https://api.paystack.co/transaction"
 const token = process.env.PAYSTACK_SECRET_KEY
@@ -20,7 +18,8 @@ const options = {
   }
   // GETTING THE TRANSACTION REDIRECT ROUTE
 route.post("/payment", async (req, res)=>{
-    const data = {email, amount, callback_url}
+    const {email, amount} = req.body
+    const data = {email, amount: amount * 100, callback_url,reference}
     const response = await axios.post(`${url}/initialize`, data, options)
     res.status(200).json({data: response.data})
     /*      SAMPLE RESPONSE
@@ -38,13 +37,18 @@ route.post("/payment", async (req, res)=>{
 })
 // verify payment
 route.get("/payment/:id", async (req, res) => {
-    //const ref = req.params.id
+    const ref = req.params.id
     const response = await axios.get(`${url}/verify/${ref}`, options)
-    res.status(200).json({data: response.data})
+
+    if(response.data){
+        res.status(200).json({data: response.data})
+    }else{
+        res.status(400).json({data: "No such Reference number found"})
+    }
 
     /*      SAMPLE RESPONSE
     {
-    "data": {
+    "data": { 
         "status": true,
         "message": "Verification successful",
         "data": {
