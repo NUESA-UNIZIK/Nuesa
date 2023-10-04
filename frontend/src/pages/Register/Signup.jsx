@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import { Link, useNavigate } from "react-router-dom";
-import {toast} from 'react-toastify'
+import { toast } from "react-toastify";
 import Footer from "../../Homepage/Footer/Footer";
 import Navbar2 from "../../Homepage/Header/Navbar2";
-import axios from 'axios'
+import axios from "axios";
 import { signUp } from "../../service/registerService";
-
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -16,10 +15,9 @@ const Signup = () => {
     level: "",
     password: "",
     password2: "",
+    regNumber: "",
   });
 
-
- 
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
@@ -27,7 +25,7 @@ const Signup = () => {
     setFormData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
-    }))
+    }));
   };
 
   const validateForm = () => {
@@ -76,12 +74,9 @@ const Signup = () => {
       }
     }
   };
- 
-
 
   return (
     <div className="mx-auto">
-    
       <div className="text-center md:py-[80px] py-[20px]  bg-cover  h-[85px]  bg-[url('/src/assets/heroimage.svg')]">
         <h1 className="md:text-[48px] text-center -mt-8 hidden md:block text-[24px] text-white uppercase relative  font-[700] ">
           Create Account
@@ -93,7 +88,6 @@ const Signup = () => {
             </h1>
           </div>
         </div>
-       
       </div>
       <div className="flex flex-row my-[30px] items-center align-center justify-center md:mt-[30px] mt-[20px]   gap-[4px] ">
         <Link
@@ -115,7 +109,7 @@ const Signup = () => {
         </Link>
       </div>
       <div className="justify-center mx-auto text-center md:w-[352px] h-[588px] md:shadow-2xl md:border px-2 md:px-0 border-solid rounded-md md:mb-8 mt-16">
-        <form onSubmit={handleSubmit} >
+        <form onSubmit={handleSubmit}>
           <div className="px-6 mt-4 text-start">
             <label htmlFor="" className="text-end font-semibold">
               Firstname
@@ -124,7 +118,7 @@ const Signup = () => {
               type="text"
               className="w-[100%] h-[44px] rounded-[8px] focus:outline-none px-4 mt-2 bg-[#F5F2ED]"
               value={formData.firstName}
-              name= "firstName"
+              name="firstName"
               onChange={handleChange}
             />
           </div>
@@ -138,6 +132,18 @@ const Signup = () => {
               className="w-[100%] h-[44px] rounded-[8px] focus:outline-none px-4 mt-2 bg-[#F5F2ED]"
               value={formData.username}
               name="username"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="px-6 mt-6 text-start">
+            <label htmlFor="" className="text-end font-semibold">
+              Reg Number
+            </label>
+            <input
+              type="text"
+              className="w-[100%] h-[44px] rounded-[8px] focus:outline-none px-4 mt-2 bg-[#F5F2ED]"
+              value={formData.regNumber}
+              name="regNumber"
               onChange={handleChange}
             />
           </div>
@@ -231,18 +237,17 @@ const Signup = () => {
             />
           </div>
           <div className="px-6 text-red-500">
-          {errors.firstName && <p>{errors.firstName}</p>}
-          {errors.username && <p>{errors.username}</p>}
-          {errors.department && <p>{errors.department}</p>}
-          {errors.level && <p>{errors.level}</p>}
-          {errors.password && <p>{errors.password}</p>}
-          {errors.password2 && <p>{errors.password2}</p>}
-        </div>
+            {errors.firstName && <p>{errors.firstName}</p>}
+            {errors.username && <p>{errors.username}</p>}
+            {errors.department && <p>{errors.department}</p>}
+            {errors.level && <p>{errors.level}</p>}
+            {errors.password && <p>{errors.password}</p>}
+            {errors.password2 && <p>{errors.password2}</p>}
+          </div>
           <div className="px-6 mt-6 text-start">
             <button
-            type="submit"
+              type="submit"
               className="w-[100%] h-[44px] rounded-[8px] font-bold focus:outline-none px-4 mt-2 bg-black text-white"
-              
             >
               Create an account
             </button>
@@ -255,7 +260,7 @@ const Signup = () => {
           Sign in
         </Link>
       </p>
-     <Footer/>
+      <Footer />
     </div>
   );
 };
