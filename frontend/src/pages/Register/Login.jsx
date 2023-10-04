@@ -10,25 +10,43 @@ import { loginIn } from "../../service/registerService";
 
 
 const Login = () => {
-const [username, setUsername] = useState("")
-const [password, setPassword] = useState("")
-const [response, setResponse] = useState(null)
-const navigate = useNavigate()
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
 
-const data = {username,password}
- 
-async function submit (){
-  const res = await loginIn(data)
-  console.log(res)
-  const {error, status, message} = res.data
-    if(status){
-          toast.success(message)
-          navigate('/')
-        }else{
-          toast.error(error)
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!username) {
+      newErrors.username = "Username is required";
+    }
+    if (!password) {
+      newErrors.password = "Password is required";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  async function submit() {
+    if (validateForm()) {
+      const data = { username, password };
+      try {
+        const res = await loginIn(data);
+        console.log(res);
+        const { error, status, message } = res.data;
+        if (status) {
+          toast.success(message);
+          navigate('/');
+        } else {
+          toast.error(error);
         }
-      } 
-
+      } catch (error) {
+        toast.error("An error occurred during login");
+      }
+    }
+  }
   return (
     <div className="mx-auto">
      
@@ -65,12 +83,14 @@ async function submit (){
               Email address
             </label>
             <input
-              type="username"
+              type="email"
               className="w-[100%] h-[44px] rounded-[8px] focus:outline-none px-4 mt-2 bg-[#F5F2ED]"
               value={username}
+              name="username"
               onChange={(e)=> setUsername(e.target.value)}
             />
           </div>
+          {errors.username && <p className="text-red-500">{errors.username}</p>}
 
           <div className="px-6 mt-6 text-start">
             <label htmlFor="" className="text-end font-semibold">
@@ -80,9 +100,11 @@ async function submit (){
               type="password"
               className="w-[100%] h-[44px] rounded-[8px] focus:outline-none px-4 mt-2 bg-[#F5F2ED]"
               value={password}
+              name="password"
               onChange={e=> setPassword(e.target.value)}
             />
           </div>
+          {errors.password && <p className="text-red-500">{errors.password}</p>}
           <div className="px-6 mt-6 text-start">
             <button
               onClick={submit}

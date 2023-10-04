@@ -2,9 +2,7 @@ const User = require("../model/user");
 const passport = require("passport");
 
 exports.register = (req, res) => {
-    const username = req.body.username;
     const password = req.body.password;
-    const firstName = req.body.firstName;
     const user = req.body
 
     //Register a new user using the local strategy

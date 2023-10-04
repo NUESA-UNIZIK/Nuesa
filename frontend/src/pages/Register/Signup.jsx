@@ -9,26 +9,73 @@ import { signUp } from "../../service/registerService";
 
 
 const Signup = () => {
-  const [firstName, setFirstName] = useState("")
-  const [username, setUserName] = useState("")
-  const [department, setDepartment] = useState("")
-  const [level, setLevel] = useState("")
-  const [password, setPassword] = useState("")
-  const [password2, setPassword2] = useState("")
+  const [formData, setFormData] = useState({
+    firstName: "",
+    username: "",
+    department: "",
+    level: "",
+    password: "",
+    password2: "",
+  });
 
-  const navigate = useNavigate()
-  
-  const data = {firstName,username,department,level,password}
-  async function submit(){ 
-    if(password !== password2){
-      toast('Passwords do not match')
-    }else if(password === password2){
-      const res = await signUp(data)
-      res.data.message ?
-       toast(res.data.message) && navigate('/login')
-      : toast(res.data.err)
+
+ 
+  const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }))
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+    if (!formData.firstName) {
+      newErrors.firstName = "First name is required";
     }
-  }
+    if (!formData.username) {
+      newErrors.username = "Email is required";
+    } else if (
+      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(formData.username)
+    ) {
+      newErrors.username = "Invalid email address";
+    }
+    if (!formData.department) {
+      newErrors.department = "Department is required";
+    }
+    if (!formData.level) {
+      newErrors.level = "Level is required";
+    }
+    if (!formData.password) {
+      newErrors.password = "Password is required";
+    } else if (formData.password.length < 6) {
+      newErrors.password = "Password must be at least 6 characters";
+    }
+    if (formData.password !== formData.password2) {
+      newErrors.password2 = "Passwords do not match";
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+      try {
+        const res = await signUp(formData);
+        if (res.data.message) {
+          toast.success(res.data.message);
+          navigate("/login");
+        } else {
+          toast.error("Registration failed");
+        }
+      } catch (error) {
+        toast.error("An error occurred during registration");
+      }
+    }
+  };
  
 
 
@@ -68,7 +115,7 @@ const Signup = () => {
         </Link>
       </div>
       <div className="justify-center mx-auto text-center md:w-[352px] h-[588px] md:shadow-2xl md:border px-2 md:px-0 border-solid rounded-md md:mb-8 mt-16">
-        <div >
+        <form onSubmit={handleSubmit} >
           <div className="px-6 mt-4 text-start">
             <label htmlFor="" className="text-end font-semibold">
               Firstname
@@ -76,8 +123,9 @@ const Signup = () => {
             <input
               type="text"
               className="w-[100%] h-[44px] rounded-[8px] focus:outline-none px-4 mt-2 bg-[#F5F2ED]"
-              value={firstName}
-              onChange={(e)=> setFirstName(e.target.value)}
+              value={formData.firstName}
+              name= "firstName"
+              onChange={handleChange}
             />
           </div>
 
@@ -88,8 +136,9 @@ const Signup = () => {
             <input
               type="email"
               className="w-[100%] h-[44px] rounded-[8px] focus:outline-none px-4 mt-2 bg-[#F5F2ED]"
-              value={username}
-              onChange={(e)=> setUserName(e.target.value)}
+              value={formData.username}
+              name="username"
+              onChange={handleChange}
             />
           </div>
 
@@ -99,11 +148,11 @@ const Signup = () => {
                 Department
               </label>
               <select
-                name="Dept"
+                name="department"
                 id="dept"
                 className=" w-[173px] h-[44px] rounded-[8px] focus:outline-none px-4 mt-2 bg-[#F5F2ED]"
-                value={department}
-                onChange={e=> setDepartment(e.target.value)}
+                value={formData.department}
+                onChange={handleChange}
               >
                 <option value=""></option>
                 <option value="Electrical Engineering">
@@ -140,11 +189,11 @@ const Signup = () => {
                 Level
               </label>
               <select
-                name="levl"
+                name="level"
                 id="level"
                 className="md:w-[106px] w-[96px] h-[44px] rounded-[8px] focus:outline-none  mt-2 bg-[#F5F2ED]"
-                value={level}
-                onChange={e=> setLevel(e.target.value)}
+                value={formData.level}
+                onChange={handleChange}
               >
                 <option value=""></option>
                 <option value="100">100</option>
@@ -163,8 +212,9 @@ const Signup = () => {
             <input
               type="password"
               className="w-[100%] h-[44px] rounded-[8px] focus:outline-none px-4 mt-2 bg-[#F5F2ED]"
-              value={password}
-              onChange={e=> setPassword(e.target.value)}
+              value={formData.password}
+              name="password"
+              onChange={handleChange}
             />
           </div>
 
@@ -175,20 +225,29 @@ const Signup = () => {
             <input
               type="password"
               className="w-[100%] h-[44px] rounded-[8px] focus:outline-none px-4 mt-2 bg-[#F5F2ED]"
-              value={password2}
-              onChange={e=> setPassword2(e.target.value)}
+              value={formData.password2}
+              name="password2"
+              onChange={handleChange}
             />
           </div>
-
+          <div className="px-6 text-red-500">
+          {errors.firstName && <p>{errors.firstName}</p>}
+          {errors.username && <p>{errors.username}</p>}
+          {errors.department && <p>{errors.department}</p>}
+          {errors.level && <p>{errors.level}</p>}
+          {errors.password && <p>{errors.password}</p>}
+          {errors.password2 && <p>{errors.password2}</p>}
+        </div>
           <div className="px-6 mt-6 text-start">
             <button
+            type="submit"
               className="w-[100%] h-[44px] rounded-[8px] font-bold focus:outline-none px-4 mt-2 bg-black text-white"
-              onClick={()=> submit()}
+              
             >
               Create an account
             </button>
           </div>
-        </div>
+        </form>
       </div>
       <p className="text-center mb-8">
         Already have an account?{" "}
