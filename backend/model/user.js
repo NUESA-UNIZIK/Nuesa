@@ -8,6 +8,12 @@ const userSchema = new Schema({
     firstName: {
         type: String
     },
+    regNumber: {
+        type: Number
+    },
+    payment:{
+        type: String
+    },
     googleId: {
         type: String
     },
@@ -15,6 +21,9 @@ const userSchema = new Schema({
         type: String
     },
     level:{
+        type: String
+    },
+    username:{
         type: String
     },
     role: {

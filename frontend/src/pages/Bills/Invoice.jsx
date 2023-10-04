@@ -1,7 +1,7 @@
 import React from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import { Link } from "react-router-dom";
-import Qrcode from "../../assets/qr.png"
+import Qrcode from "../../assets/qr.png";
 
 const Invoice = () => {
   return (
@@ -34,7 +34,7 @@ const Invoice = () => {
       <div className="flex justify-center">
         <div className="rounded-md mx-auto md:p-[24px] p-[12px] justify-center  shadow-lg h-[680px] w-full max-w-[350px] md:max-w-[500px]">
           <div className="flex justify-center">
-            <img src={Qrcode} alt="qrcode"/>
+            <img src={Qrcode} alt="qrcode" />
           </div>
           <div className="mt-4 leading-[3.3rem]">
             <div className="flex md:text-[18px] text-[14px] font-semibold justify-between">
@@ -77,7 +77,11 @@ const Invoice = () => {
               <p>16243574906432</p>
             </div>
           </div>
-          <button className="mt-16 bg-primary px-8 py-3 text-white font-semibold text-[16px]">Proceed to Payment</button>
+          <Link to="/payment">
+            <button className="mt-16 bg-primary px-8 py-3 text-white font-semibold text-[16px]">
+              Proceed to Payment
+            </button>
+          </Link>
         </div>
       </div>
     </div>
