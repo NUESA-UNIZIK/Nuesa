@@ -1,27 +1,29 @@
-const express = require("express");
-const route = express.Router();
-const axios = require("axios");
-const User = require("../model/user")
+const express = require("express")
+const route = express.Router()
+const axios = require("axios")
 
-route.get("/payment", (req, res) => {
-  res.status(200).json({ data: "hello" });
-});
-const amount = 2500000
-const reference = new Date().getTime().toString().slice(0, 11);
-const callback_url = "http://localhost:5173";
-const url = "https://api.paystack.co/transaction";
-const token = process.env.PAYSTACK_SECRET_KEY;
+route.get("/payment", (req, res)=>{
+    res.status(200).json({data: "hello"})
+})
+const amount = 25000
+const reference = new Date().getTime().toString().slice(0, 12)
+const callback_url = "http://localhost:5173"
+const url = "https://api.paystack.co/transaction"
+const token = process.env.PAYSTACK_SECRET_KEY
 const options = {
     headers: {
-      Authorization: `Bearer sk_test_c708df44822279cffe0bf7c04f992e145ec81bac`,
+      Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json'
     }
   }
   // GETTING THE TRANSACTION REDIRECT ROUTE
 route.post("/payment", async (req, res)=>{
-    const data = {email, amount, callback_url}
-    const response = await axios.post(`${url}/initialize`, data, options)
-    res.status(200).json({data: response.data})
+    const {email} = req.body
+    const data = {email, amount: amount * 100, callback_url,reference}
+    await axios.post(`${url}/initialize`, data, options)
+    .then((response)=> {res.status(200).json({data: response.data})})
+    .catch((err) => res.status(400).json({data: "Reference Number already allocated to user"}))
+    
     /*      SAMPLE RESPONSE
     {
     "data": {
@@ -34,14 +36,19 @@ route.post("/payment", async (req, res)=>{
         }
     }
 } */
-});
+})
 // verify payment
 route.get("/payment/:id", async (req, res) => {
-    //const ref = req.params.id
+    const ref = req.params.id
     const response = await axios.get(`${url}/verify/${ref}`, options)
-    res.status(200).json({data: response.data})
 
-  /*      SAMPLE RESPONSE
+    if(response.data){
+        res.status(200).json({data: response.data})
+    }else{
+        res.status(400).json({data: "No such Reference number found"})
+    }
+
+    /*      SAMPLE RESPONSE
     {
     "data": { 
         "status": true,
@@ -126,5 +133,6 @@ route.get("/payment/:id", async (req, res) => {
     }
 }
     */
-});
-module.exports = route;
+})
+module.exports = route
+
