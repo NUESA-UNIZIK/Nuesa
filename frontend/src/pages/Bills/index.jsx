@@ -1,12 +1,41 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import { Link } from "react-router-dom";
-
+import axios from 'axios'
+import { toast } from "react-toastify";
+// import {Pay} from "../../service/payService"
 const Billing = () => {
+   const [result, setResult] = useState([])
+   const {user} = JSON.parse(localStorage.getItem("user"))
+   const email = user.username
+      
+    const  Pay = async () =>{
+     const response = await fetch('http://localhost:8000/api/payment', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({email})
+  })
+    const content = await response.json();
+    setResult(content)
+    content.data.data ? window.location.replace(content.data.data.authorization_url) : toast.error(result.data)
+    
+  
+  };
+    //    axios.post("http://localhost:8000/api/payment", {email} )
+    //   .then((response) => {
+    //     const data = response.data;
+    //     setResult([...result, ...data])
+    //     console.log
+    // });
+    // }
+ 
   return (
     <div className="mx-auto text-center">
       <div className="text-center md:py-[80px] py-[20px] bg-cover  h-[85px]  bg-[url('/src/assets/heroimage.svg')]">
-        <h1 className="md:text-[48px] md:-mt-8  text-[24px] text-white uppercase  font-[700] ">
+        <h1 onClick={()=> console.log(result)} className="md:text-[48px] md:-mt-8  text-[24px] text-white uppercase  font-[700] ">
           BILLS
         </h1>
       </div>
@@ -276,7 +305,7 @@ const Billing = () => {
 
         </div>
 
-        <Link to="/invoice">
+        <Link onClick={Pay} >
           <button className="mt-8 bg-primary px-8 py-3 text-white font-semibold text-[16px]">
             Generate Invoice
           </button>
