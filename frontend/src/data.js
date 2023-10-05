@@ -282,7 +282,7 @@ export const executives = {
       executiveslider: [
         {
           _id: "1",
-          image: DOS2IMAGE,
+          image:  "https://res.cloudinary.com/mmainspire/image/upload/v1696026481/NUESA/jane_yuf617.jpg",
           name: "Comr.Onuigbo Chinaza MaryJane",
           postion: "Director of Social 2",
           department: "Polymer and Textile Engineering",
