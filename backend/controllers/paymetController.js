@@ -7,7 +7,7 @@ route.get("/payment", (req, res)=>{
 })
 const amount = 25000
 const reference = new Date().getTime().toString().slice(0, 12)
-const callback_url = "http://localhost:5173"
+const callback_url = "http://localhost:5173/invoice" || "https://nuesa-tufb.onrender.com/invoice"
 const url = "https://api.paystack.co/transaction"
 const token = process.env.PAYSTACK_SECRET_KEY
 const options = {

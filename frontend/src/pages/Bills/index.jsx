@@ -9,8 +9,8 @@ const Billing = () => {
    const {user} = JSON.parse(localStorage.getItem("user"))
    const email = user.username
       
-    const  Pay = async () =>{
-     const response = await fetch('http://localhost:8000/api/payment', {
+  const  Pay = async () =>{
+    const response = await fetch('http://localhost:8000/api/payment', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',

@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { IoIosArrowForward } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Qrcode from "../../assets/qr.png";
 
 const Invoice = () => {
+
+  const location = useLocation()
+  console.log(location.search.slice(8, 20))
+  const ref = location.search.slice(8, 20)
+  const user = JSON.parse(localStorage.getItem("user"))
+  const {firstName, level, username, regNumber, department} = user.user
+  console.log(user.user)
+ 
   return (
     <div className="mx-auto text-center">
       <div className="text-center md:py-[80px] py-[20px] bg-cover  h-[85px]  bg-[url('/src/assets/heroimage.svg')]">
@@ -39,17 +47,22 @@ const Invoice = () => {
           <div className="mt-4 leading-[3.3rem]">
             <div className="flex md:text-[18px] text-[14px] font-semibold justify-between">
               <p>Name</p>
-              <p>Username</p>
+              <p>{firstName}</p>
+            </div>
+
+            <div className="flex md:text-[18px] text-[14px] font-semibold justify-between">
+              <p>Email</p>
+              <p>{username}</p>
             </div>
 
             <div className="flex md:text-[18px] text-[14px] font-semibold justify-between">
               <p>Reg Number</p>
-              <p>2020364015</p>
+              <p>{regNumber}</p>
             </div>
 
             <div className="flex md:text-[18px] text-[14px] font-semibold justify-between">
               <p>Department</p>
-              <p>Electrical Engineering</p>
+              <p>{department}</p>
             </div>
 
             <div className="flex md:text-[18px] text-[14px] font-semibold justify-between">
@@ -59,7 +72,7 @@ const Invoice = () => {
 
             <div className="flex md:text-[18px] text-[14px] font-semibold justify-between">
               <p>Level</p>
-              <p>500</p>
+              <p>{level}</p>
             </div>
 
             <div className="flex md:text-[18px] text-[14px] font-semibold justify-between">
@@ -74,7 +87,7 @@ const Invoice = () => {
 
             <div className="flex md:text-[18px] text-[14px] font-semibold justify-between">
               <p>Reference Number</p>
-              <p>16243574906432</p>
+              <p>{location.search.slice(8, 20)}</p>
             </div>
           </div>
           <Link to="/payment">
