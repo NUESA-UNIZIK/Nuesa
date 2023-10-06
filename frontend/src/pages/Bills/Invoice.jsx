@@ -5,6 +5,10 @@ import Qrcode from "../../assets/qr.png";
 
 const Invoice = () => {
 
+  const handlePrintInvoice = () => {
+    // Use the window.print() method to trigger the browser's print dialog
+    window.print();
+  }
   const location = useLocation()
   console.log(location.search.slice(8, 20))
   const ref = location.search.slice(8, 20)
@@ -90,11 +94,11 @@ const Invoice = () => {
               <p>{location.search.slice(8, 20)}</p>
             </div>
           </div>
-          <Link to="/payment">
-            <button className="mt-16 bg-primary px-8 py-3 text-white font-semibold text-[16px]">
+         
+            <button  onClick={handlePrintInvoice} className="mt-16 bg-primary px-8 py-3 text-white font-semibold text-[16px]">
               Proceed to Payment
             </button>
-          </Link>
+          
         </div>
       </div>
     </div>

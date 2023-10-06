@@ -186,7 +186,7 @@ const Billing = () => {
         </div>
 
         {/* ICT FEE */}
-
+{/* 
         <div className="mx-auto flex justify-center">
           <div className="flex justify-between items-center mx-auto w-[85%] xl:w-[25%] rounded-md shadow-lg md:p-[18px] p-[12px] mt-12">
             <div className="flex gap-2 items-center">
@@ -303,7 +303,7 @@ const Billing = () => {
             </div>
           </div>
 
-        </div>
+        </div> */}
 
         <Link onClick={Pay} >
           <button className="mt-8 bg-primary px-8 py-3 text-white font-semibold text-[16px]">
