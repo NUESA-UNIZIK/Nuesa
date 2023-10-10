@@ -17,7 +17,7 @@ exports.register = (req, res) => {
         res.setHeader("Content-Type", "application/json");
         res
           .status(200)
-          .json({ success: true, message: "Registration Successful", user });
+          .json({ success: true, message: "Registration Successful", user:{} });
         // res.redirect("/login");
       });
     }

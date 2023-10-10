@@ -11,8 +11,13 @@ const userSchema = new Schema({
     regNumber: {
         type: Number
     },
-    payment:{
-        type: String
+    ref:{
+        type: String,
+        default: ""
+    },
+    verified:{
+        type: Boolean,
+        default: false
     },
     googleId: {
         type: String

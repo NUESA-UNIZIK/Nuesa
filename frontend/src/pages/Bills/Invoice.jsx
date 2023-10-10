@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { IoIosArrowForward } from "react-icons/io";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Qrcode from "../../assets/qr.png";
+import { toast } from "react-toastify";
 
 const Invoice = () => {
-
+  const [verified, setVerified] = useState(false)
   const handlePrintInvoice = () => {
     // Use the window.print() method to trigger the browser's print dialog
     window.print();
@@ -12,10 +13,27 @@ const Invoice = () => {
   const location = useLocation()
   console.log(location.search.slice(8, 20))
   const ref = location.search.slice(8, 20)
+  const navigate = useNavigate()
   const user = JSON.parse(localStorage.getItem("user"))
   const {firstName, level, username, regNumber, department} = user.user
   console.log(user.user)
  
+
+ 
+  useEffect(()=>{
+    const validation = async () =>{
+      const response = await fetch(`http://localhost:8000/api/payment/${ref}`)
+      const content = await response.json();
+      if(content.status === 'success'){
+        toast.success("Payment successful") 
+        console.log(content)
+    }else{
+      toast.error("Payment error"); navigate("/billing")
+      console.log(content)
+    }
+  }
+    validation()
+  },[ref])
   return (
     <div className="mx-auto text-center">
       <div className="text-center md:py-[80px] py-[20px] bg-cover  h-[85px]  bg-[url('/src/assets/heroimage.svg')]">

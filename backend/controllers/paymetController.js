@@ -1,12 +1,12 @@
 const express = require("express")
 const route = express.Router()
 const axios = require("axios")
+const User = require("../model/user")
 
 route.get("/payment", (req, res)=>{
     res.status(200).json({data: "hello"})
 })
 const amount = 25000
-const reference = new Date().getTime().toString().slice(0, 12)
 const callback_url = "http://localhost:5173/invoice" || "https://nuesa-tufb.onrender.com/invoice"
 const url = "https://api.paystack.co/transaction"
 const token = process.env.PAYSTACK_SECRET_KEY
@@ -18,12 +18,23 @@ const options = {
   }
   // GETTING THE TRANSACTION REDIRECT ROUTE
 route.post("/payment", async (req, res)=>{
-    const {email} = req.body
+    const {email, reference} = req.body
     const data = {email, amount: amount * 100, callback_url,reference}
-    await axios.post(`${url}/initialize`, data, options)
-    .then((response)=> {res.status(200).json({data: response.data})})
-    .catch((err) => res.status(400).json({data: "Reference Number already allocated to user"}))
-    
+    const user = await User.findOneAndUpdate({username: email},{ref: reference})
+    console.log(user)
+    await user.save()
+    const response = await fetch(`${url}/initialize`, {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+        const content = await response.json();
+        res.status(200).json({data: content})
+        console.log(content, data);
     /*      SAMPLE RESPONSE
     {
     "data": {
@@ -43,7 +54,10 @@ route.get("/payment/:id", async (req, res) => {
     const response = await axios.get(`${url}/verify/${ref}`, options)
 
     if(response.data){
-        res.status(200).json({data: response.data})
+        res.status(200).json({
+            data: response.data.data.gateway_response, 
+            status:response.data.data.status
+        })
     }else{
         res.status(400).json({data: "No such Reference number found"})
     }

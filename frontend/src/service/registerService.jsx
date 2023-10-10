@@ -16,8 +16,6 @@ const getUserDataFromLocalStorage = () => {
 export const signUp = async (data) => {
   const res = await axios.post(url + "register", data)
     .then((res) => {
-      // Store user data in localStorage on successful signup
-      storeUserDataInLocalStorage(res.data);
       return res;
     })
     .catch((err) => err.response);

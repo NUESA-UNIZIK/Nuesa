@@ -1,37 +1,34 @@
 import React, { useState, useEffect } from "react";
 import { IoIosArrowForward } from "react-icons/io";
-import { Link } from "react-router-dom";
-import axios from 'axios'
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-// import {Pay} from "../../service/payService"
+
 const Billing = () => {
    const [result, setResult] = useState([])
-   const {user} = JSON.parse(localStorage.getItem("user"))
-   const email = user.username
-      
-  const  Pay = async () =>{
-    const response = await fetch('http://localhost:8000/api/payment', {
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({email})
-  })
-    const content = await response.json();
-    setResult(content)
-    content.data.data ? window.location.replace(content.data.data.authorization_url) : toast.error(result.data)
-    
-  
+   const navigate = useNavigate()
+   const  Pay = async () =>{
+    const user = JSON.parse(localStorage.getItem("user"))
+    if(user == null ){
+      navigate('/register') 
+      toast.error("Please login/Register before making payment")
+    }else{
+      const email = user.user.username
+      const reference = new Date().getTime().toString().slice(0,12)
+      const response = await fetch('http://localhost:8000/api/payment', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({email, reference})
+      })
+        const content = await response.json();
+        setResult(content)
+        content.data.data ? window.location.replace(content.data.data.authorization_url) : toast.error(result.data)
+     }
+    console.log(reference)
   };
-    //    axios.post("http://localhost:8000/api/payment", {email} )
-    //   .then((response) => {
-    //     const data = response.data;
-    //     setResult([...result, ...data])
-    //     console.log
-    // });
-    // }
- 
+
   return (
     <div className="mx-auto text-center">
       <div className="text-center md:py-[80px] py-[20px] bg-cover  h-[85px]  bg-[url('/src/assets/heroimage.svg')]">
@@ -305,11 +302,11 @@ const Billing = () => {
 
         </div> */}
 
-        <Link onClick={Pay} >
+        <div onClick={Pay} >
           <button className="mt-8 bg-primary px-8 py-3 text-white font-semibold text-[16px]">
             Generate Invoice
           </button>
-        </Link>
+        </div>
       </div>
     </div>
   );

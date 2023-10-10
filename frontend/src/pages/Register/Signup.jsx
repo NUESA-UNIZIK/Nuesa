@@ -3,8 +3,6 @@ import { IoIosArrowForward } from "react-icons/io";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Footer from "../../Homepage/Footer/Footer";
-import Navbar2 from "../../Homepage/Header/Navbar2";
-import axios from "axios";
 import { signUp } from "../../service/registerService";
 
 const Signup = () => {
