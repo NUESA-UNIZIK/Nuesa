@@ -4,10 +4,27 @@ import { CgClose } from "react-icons/cg";
 import { HiOutlineMenuAlt1 } from "react-icons/hi";
 import Navmobile from "./Navmobile";
 import Nuesalogo from "../../assets/nuesalogo.svg";
+import { getUserDataFromLocalStorage, logout } from "../../service/registerService";
+import { useAuth } from "../../utils/auth";
 
 const Navbar = () => {
   const [bg, setBg] = useState(false);
   const [mobileNav, setMobileNav] = useState(false);
+  const [isButtonOpen, setIsButtonOpen] = useState(false);
+
+
+  const toggleDropdownButton = () => {
+    setIsButtonOpen(!isButtonOpen);
+  };
+
+  const userData = getUserDataFromLocalStorage();
+  const { user } = useAuth();
+
+
+  const handleLogout = () => {
+    logout();
+    router.push("/");
+  };
 
   useEffect(() => {
     // add event listener
@@ -51,7 +68,63 @@ const Navbar = () => {
             <Navmobile />
           </div>
         </div>
-        <nav className="hidden lg:flex items-center">
+        {user ? (
+              <nav className="hidden lg:flex items-center">
+              <div>
+                <img src={Nuesalogo} className="w-[70px] ml-6" alt="" />
+              </div>
+              <ul className="md:flex text-white container justify-center md:gap-[22px]">
+                <Link
+                  to="/billing"
+                  className="bg-secondary/[44%] font-semibold px-4 py-2 rounded-md text-[16px]"
+                >
+                  Bills
+                </Link>
+                <Link
+                  to="/facultybio"
+                  className="bg-secondary/[44%] font-semibold md:px-4 xl:px-4 py-2 rounded-md md:text-[13px] xl:text-[16px]"
+                >
+                  FACULTY BIO
+                </Link>
+                <Link
+                  to="/newsevent"
+                  className="bg-secondary/[44%] font-semibold px-4 py-2 rounded-md text-[16px]"
+                >
+                  NEWS/EVENTS
+                </Link>
+                {/* <Link to="">
+                  <li className="bg-secondary/[44%] font-semibold px-4 py-2 rounded-md text-[16px]">
+                    ADMISSION
+                  </li>
+                </Link> */}
+                <Link to="/achievement">
+                  <li className="bg-secondary/[44%] font-semibold px-4 py-2 rounded-md text-[16px]">
+                    ACHIEVEMENTS
+                  </li>
+                </Link>
+                <div className="relative inline-block">
+                  <button  onClick={toggleDropdownButton}>
+                    <li className="bg-primary px-6 py-2 font-semibold rounded-md text-[16px]">
+                    Hello, {userData?.user.firstName}
+                    </li>
+                  </button>
+
+                  {isButtonOpen && (
+                      <div className="absolute bg-black h-[206px] py-4 space-y-4 right-0 mt-2 w-[200px] text-white text-center rounded-md shadow-lg">
+                        <a className=" px-4 py-6 text-sm inline-flex  items-center text-white">
+                          Profile
+                        </a>
+                        <button onClick={handleLogout} className="bg-secondary/[44%] rounded-[6px] text-white w-[165px] h-[44px] p-[10px] shadow-2xl">
+                          Sign out
+                        </button>
+                      </div>
+                    )}
+
+                </div>
+              </ul>
+            </nav>
+        ) : (
+          <nav className="hidden lg:flex items-center">
           <div>
             <img src={Nuesalogo} className="w-[70px] ml-6" alt="" />
           </div>
@@ -91,6 +164,8 @@ const Navbar = () => {
             </Link>
           </ul>
         </nav>
+        )}
+      
       </div>
     </header>
   );

@@ -3,12 +3,12 @@ import axios from "axios";
 const url = "/users/";
 
 // Function to store user data in localStorage
-const storeUserDataInLocalStorage = (userData) => {
+export const storeUserDataInLocalStorage = (userData) => {
   localStorage.setItem("user", JSON.stringify(userData));
 };
 
 // Function to retrieve user data from localStorage
-const getUserDataFromLocalStorage = () => {
+export const getUserDataFromLocalStorage = () => {
   const userData = localStorage.getItem("user");
   return userData ? JSON.parse(userData) : null;
 };
@@ -30,7 +30,7 @@ export const loginIn = async (data) => {
       return res;
     })
     .catch((err) => err.response);
-  return res;
+  return res; 
 };
 
 // Function to clear user data from localStorage on logout

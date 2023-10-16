@@ -106,7 +106,7 @@ const Signup = () => {
           Signup
         </Link>
       </div>
-      <div className="justify-center mx-auto text-center md:w-[352px] h-[588px] md:shadow-2xl md:border px-2 md:px-0 border-solid rounded-md md:mb-8 mt-16">
+      <div className="justify-center mx-auto text-center md:w-[352px] h-[688px] md:shadow-2xl md:border px-2 md:px-0 border-solid rounded-md md:mb-8 mt-16">
         <form onSubmit={handleSubmit}>
           <div className="px-6 mt-4 text-start">
             <label htmlFor="" className="text-end font-semibold">
